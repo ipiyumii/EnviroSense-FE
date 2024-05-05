@@ -4,6 +4,8 @@ import Analytics from './Analytics';
 import Prediction from './Prediction';
 import './App.css';
 import Home from './Home';
+import ReactDOM from "react-dom"; // Add this line
+
 
 export default function App() {
   return (
