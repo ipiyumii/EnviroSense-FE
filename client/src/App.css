@@ -5,7 +5,7 @@
     justify-content: space-between;
     height: 100vh;
     padding: 15px;
-    background-color: rgba(0, 0, 0, 0.885);
+    background-color: rgba(255, 255, 255, 0.662);
 }
 p{
     color: #778899;
@@ -22,10 +22,11 @@ p{
     text-align: center;
     padding: 100px
 }
-h2{
+h1{
     font-size: 90px;
     font-weight: 720;
-    background-image: linear-gradient(to left, white, #1E90FF);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-image: linear-gradient(to left, rgb(10, 65, 10), #1E90FF);
     color: transparent;
     background-clip: text;
     -webkit-background-clip: text;
@@ -42,7 +43,7 @@ h2{
 }
 
 .card-title {
-    color: #1E90FF; 
+    color: hsl(120, 84%, 20%); 
     font-size: 1.5rem;
     font-weight: bold;
 }
@@ -88,3 +89,66 @@ h2{
 .dashboard-right a {
     text-decoration: none; /* Remove underline */
 }
+
+
+ .custom-card {
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+  }
+  
+  .custom-card .card-body {
+    padding: 20px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .custom-card .card-body:hover {
+    transform: scale(1.05);
+  }
+  
+  .custom-card .card-title {
+    color: #0f5193;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .custom-card .card-text {
+    color: #778899;
+    margin-top: 10px;
+  }
+  
+  .custom-card .card-link {
+    background-color: #B0C4DE;
+    color: #000000;
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .custom-card .card-link:hover {
+    text-decoration: none;
+  }
+  
+  .header{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: 720;
+    background-image: linear-gradient(to right, rgba(6, 30, 12, 0.811), #15078f);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+  }
+
+  .table thead th {
+    background-color: hsla(0, 1%, 21%, 0.907);
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  .table tbody td {
+    background-color: white;
+    color: black;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+  }
+  

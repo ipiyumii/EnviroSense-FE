@@ -1,28 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
 function Analytics() {
-//   const [imagePaths, setImagePaths] = useState([]);
+  const [imagePaths, setImagePaths] = useState([]);
 
-//   useEffect(() => {
-//     fetch("/data")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setImagePaths(data.image_paths);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data:", error);
-//       });
-//   }, []);
+  useEffect(() => {
+      fetch('/data')
+        .then(res => res.json())
+        .then(data => {
+          setImagePaths(data.image_paths);
+        });
+    }, []);
 
   return (
-    <div>
-      <h2>Analytics</h2>
-      {/* <div>
-        {imagePaths.map((path, index) => (
-          <img key={index} src={path} alt={`Week ${index + 1}`} />
-        ))}
-      </div> */}
-    </div>
+    <>
+       <div>
+        <div className="container mt-5">
+        <div className="mt-5">
+            <h2 className='header'>Weekly Analytics</h2>
+            <ul>
+              {imagePaths.map((imagePath, index) => (
+                <li key={index}>
+                  <img src={imagePath} alt={`Week ${index + 1}`} />
+                </li>
+              ))}
+            </ul>
+        </div>
+        </div>
+      </div>
+    </> 
   );
 }
 

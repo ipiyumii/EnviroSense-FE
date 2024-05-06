@@ -7,7 +7,7 @@ const Home = () => {
         <div className="container mt-5">
           <div className="dashboard-container">
             <div className="dashboard-left">
-              <h2 className="mt-4">Kandy City Center</h2>
+              <h1 className="mt-4">Enviro SenseAI</h1>
             </div>
 
             <div className="dashboard-right">
@@ -42,3 +42,5 @@ const Home = () => {
   };
   
   export default Home;
+
+
