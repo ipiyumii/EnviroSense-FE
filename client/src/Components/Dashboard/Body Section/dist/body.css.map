@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["body.scss"],"sourcesContent":[".mainContent{\n    width: 82%;\n    height: 100%;\n    padding: 2rem;\n    overflow: auto;\n\n    .bottom{\n        margin-top: 2rem;\n        gap: 2rem;\n        align-items: flex-start;\n    }\n}"],"file":"body.css"}

@@ -1,26 +1,38 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Analytics from './Analytics';
-import Prediction from './Prediction';
 import './App.css';
-import Home from './Home';
-import ReactDOM from "react-dom"; // Add this line
+import React,{useState,useEffect} from 'react';
+import Login from './Components/Login/Login';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Register from './Components/Register/Register';
+import './App.scss'; 
 
+import {
+  createBrowserRouter,
+  RouterProvider
+}from 'react-router-dom';
 
-export default function App() {
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <div> <Login/> </div>
+  },
+  {
+    path: '/register',
+    element: <div> <Register/></div>
+  },
+  {
+    path: '/dashboard',
+    element: <div> <Dashboard/> </div>
+  },
+
+])
+ 
+function App() {
+  
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Analytics" element={<Analytics />} />
-        <Route path="/Prediction" element={<Prediction />} />
-      </Routes>
-    </BrowserRouter>
+     <div>
+        <RouterProvider router={router}/>
+    </div>
   );
 }
 
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<App />);
-
-// //export default App;
+export default App;
