@@ -9,6 +9,22 @@ import { FaPowerOff } from "react-icons/fa6";
 
 
 const SideBar = () =>{
+      
+      const handleLogout = () => {
+            fetch('http://localhost:5000/logout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            })
+            .then(response => {
+              if (response.ok) {
+                localStorage.removeItem('username');  
+                window.location.href = '/';  
+              }
+            })
+            .catch(error => {
+              console.error('Logout error:', error);
+            });
+          };
 
       return (
         <div className='sideBar grid'>
@@ -69,7 +85,7 @@ const SideBar = () =>{
                   
                         <ul className='menuLists grid'>
                               <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='#' className='menuLink flex' onClick={handleLogout}>
                               <FaPowerOff className='icon'/>
                               <span className='smallText'>
                                     Log out

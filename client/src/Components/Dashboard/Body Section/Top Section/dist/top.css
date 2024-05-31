@@ -73,7 +73,7 @@
 .topSection .cardSection .rightCard {
   position: relative;
   flex-basis: 100%;
-  height: 400px;
+  height: 360px;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;

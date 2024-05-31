@@ -17,8 +17,7 @@ const Login = () => {
     const [message, setMessage] = useState('');
     const clientId = '967460610118-g4oul1g5umkiu6heanm2ornah4hektvu.apps.googleusercontent.com';
 
-
-
+    // handle login form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -32,6 +31,7 @@ const Login = () => {
             const data = await response.json();
             setMessage(data.message);
             if (response.ok) {
+                localStorage.setItem('username', username);
                 window.location.href = '/dashboard';
             }
         }
@@ -40,27 +40,6 @@ const Login = () => {
             setMessage('failed!');
         }
     }
-
-    // const handleLogin = async (response) => {
-    //     try {
-    //         const res = await fetch('http://localhost:5000/google-login', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ token: response.credential }),
-    //         });
-    //         const data = await res.json();
-    //         setMessage(data.message);
-    //         if (res.ok) {
-    //             window.location.href = '/dashboard';
-    //         }
-         
-    //     } catch (error) {
-    //         console.error('Error:', error);
-    //         setMessage('Google Sign-In failed!');
-    //     }
-    // };
 
     const handleLogin = (response) => {
         console.log('Google login response:', response);
@@ -71,9 +50,11 @@ const Login = () => {
             headers: { 'Content-Type': 'application/json' }
         })
         .then(response => response.json())
-        .then(data => {
-            console.log('Login successful:', data);
-            window.location.href = '/dashboard';
+        .then(data => { 
+                setUsername(data.name);    
+                localStorage.setItem('username', data.name);     
+                console.log('Login successful:', data);
+                window.location.href = '/dashboard';  
         })
         .catch(error => {
             console.error('Login error:', error);
@@ -83,6 +64,8 @@ const Login = () => {
     const onFailure = (error) => {
         console.error('Google login error:', error);
     };
+    
+    
     
 
     return (
