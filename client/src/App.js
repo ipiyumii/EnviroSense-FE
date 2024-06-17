@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react';
 import Login from './Components/Login/Login';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Register from './Components/Register/Register';
+import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
 
 import {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
     path: '/dashboard',
     element: <div> <Dashboard/> </div>
   },
+  {
+    path: '/editProfile',
+    element: <div><Editprofile /></div>
+  }
 
 ])
  

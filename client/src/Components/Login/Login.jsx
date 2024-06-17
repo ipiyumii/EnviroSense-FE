@@ -18,7 +18,7 @@ const Login = () => {
     const clientId = '967460610118-g4oul1g5umkiu6heanm2ornah4hektvu.apps.googleusercontent.com';
 
     // handle login form submission
-    const handleSubmit = async (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         try {
             const response = await fetch('http://localhost:5000/', {
@@ -31,7 +31,9 @@ const Login = () => {
             const data = await response.json();
             setMessage(data.message);
             if (response.ok) {
-                localStorage.setItem('username', username);
+                // localStorage.setItem('username', username);
+                localStorage.setItem('token', data.access_token);
+                localStorage.setItem('username', data.username);
                 window.location.href = '/dashboard';
             }
         }
@@ -41,7 +43,7 @@ const Login = () => {
         }
     }
 
-    const handleLogin = (response) => {
+    const handleGoogleLogin = (response) => {
         console.log('Google login response:', response);
 
         fetch('http://localhost:5000/google-login', {
@@ -51,8 +53,8 @@ const Login = () => {
         })
         .then(response => response.json())
         .then(data => { 
-                setUsername(data.name);    
-                localStorage.setItem('username', data.name);     
+                // setUsername(data.name);    
+                localStorage.setItem('username', data.username);     
                 console.log('Login successful:', data);
                 window.location.href = '/dashboard';  
         })
@@ -94,7 +96,7 @@ const Login = () => {
                         <h3>Welcome Back!</h3>
                     </div>
 
-                    <form action='' onSubmit={handleSubmit} className='form grid'>
+                    <form action='' onSubmit={handleLogin} className='form grid'>
                     {message && <span className='showMessage'>{message}</span>}
                         <div className='inputDiv'>
                             <label htmlFor='username'>Username</label>
@@ -122,7 +124,7 @@ const Login = () => {
                             <GoogleLogin
                                 clientId={clientId}
                                 buttonText="Sign in with Google"
-                                onSuccess={handleLogin}
+                                onSuccess={handleGoogleLogin}
                                 onFailure={onFailure}
                                 cookiePolicy={'single_host_origin'}
                                 // isSignedIn={true}

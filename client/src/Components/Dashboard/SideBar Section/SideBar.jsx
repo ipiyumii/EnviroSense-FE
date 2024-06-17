@@ -6,25 +6,33 @@ import { RiDeleteBin3Line } from "react-icons/ri";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { FaChartLine } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
 
 
 const SideBar = () =>{
-      
-      const handleLogout = () => {
-            fetch('http://localhost:5000/logout', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' }
-            })
-            .then(response => {
-              if (response.ok) {
-                localStorage.removeItem('username');  
-                window.location.href = '/';  
-              }
-            })
-            .catch(error => {
-              console.error('Logout error:', error);
-            });
+      const handleLogout = async () => {
+            try {
+                  const response = await fetch('http://localhost:5000/logout', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include'  
+                  });
+            
+                  if (response.ok) {
+                    localStorage.removeItem('username');  
+                  //   setMessage('Logged out successfully');
+                    window.location.href = '/';  
+                  } else {
+                    console.error('Logout failed');
+                  }
+                } catch (error) {
+                  console.error('Logout error:', error);
+                }
           };
+
+      //     const handleProfileClick = () => {
+      //       navigate('/editProfile');
+      //     };
 
       return (
         <div className='sideBar grid'>
@@ -40,7 +48,7 @@ const SideBar = () =>{
 
                   <ul className='menuLists grid'>
                         <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='/dashboard' className='menuLink flex'>
                               <IoMdSpeedometer className='icon'/>
                               <span className='smallText'>
                                     Dash board
@@ -49,7 +57,7 @@ const SideBar = () =>{
                         </li>
 
                         <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='' className='menuLink flex'>
                               <RiDeleteBin3Line className='icon'/>
                               <span className='smallText'>
                                     Bin levels
@@ -84,6 +92,15 @@ const SideBar = () =>{
                         </h3>
                   
                         <ul className='menuLists grid'>
+                              <li className='listItem'>
+                              <a href='/editProfile' className='menuLink flex'>
+                              <FaUser className='icon'/>
+                              <span className='smallText'>
+                                    Account
+                              </span>
+                              </a>
+                              </li>
+
                               <li className='listItem'>
                               <a href='#' className='menuLink flex' onClick={handleLogout}>
                               <FaPowerOff className='icon'/>

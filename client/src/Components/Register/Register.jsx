@@ -33,6 +33,8 @@ const Register = () => {
             const data = await response.json();
             setMessage(data.message);
             if (response.ok) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('token', data.access_token);
                 window.location.href = '/dashboard';
             }
         } catch (error) {
@@ -66,7 +68,7 @@ const Register = () => {
                         <h3>Welcome!</h3>
                     </div>
 
-                    <form action='' onSubmit={handleSubmit} className='form grid'>
+                    <form action='/register' method='POST' onSubmit={handleSubmit} className='form grid'>
                         <div className='inputDiv'>
                             <label htmlFor='email'>Email</label>
                             <div className='input flex'>

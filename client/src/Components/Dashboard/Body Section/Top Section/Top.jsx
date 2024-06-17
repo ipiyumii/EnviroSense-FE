@@ -6,17 +6,24 @@ import { FaCircleUser } from "react-icons/fa6";
 import video from '../../../../LoginAssests/video.mp4';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+import { useNavigate } from 'react-router-dom';
 
 const Top = () => {
-
   const [username, setUsername] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
       const storedUsername = localStorage.getItem('username');
+      console.log('Stored Username:', storedUsername);
+
       if (storedUsername) {
           setUsername(storedUsername);
       }
   }, []);
+
+  const handleProfileClick = () => {
+    navigate('/editProfile');
+  };
 
   return (
     <div className='topSection'>
@@ -28,7 +35,7 @@ const Top = () => {
 
         <div className='adminDiv flex'>
           <AiOutlineMessage className='icon' />
-          <FaCircleUser className='icon' />
+          <FaCircleUser className='icon' onClick={handleProfileClick}/>
         </div>
       </div>
       

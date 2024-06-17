@@ -104,4 +104,53 @@
   transition: .3s ease;
 }
 
+@media screen and (max-width: 1024px) {
+  .sideBar {
+    padding-bottom: 2rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .sideBar .logoDiv {
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem;
+  }
+  .sideBar img {
+    max-width: 50px;
+    margin: 0;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  .sideBar h2 {
+    display: none;
+  }
+  .divTitle {
+    font-size: var(--smallestfontSize);
+  }
+  .divTitle, .smallText {
+    font-size: var(--smallestfontSize);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .sideBar .logoDiv {
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem;
+  }
+  .sideBar img {
+    max-width: 50px;
+    margin: 0;
+    border-radius: 10px;
+    padding: .5rem;
+  }
+  .sideBar h2 {
+    display: none;
+  }
+  .divTitle, .smallText {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=sidebar.css.map */

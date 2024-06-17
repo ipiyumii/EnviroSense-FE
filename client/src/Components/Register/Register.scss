@@ -312,14 +312,14 @@ img,video{
 }
 
 @media (max-width: 1200px) {
-    .loginPage .container {
+    .registerPage .regcontainer {
         width: 80%;
         height: 80vh;
     }
 }
 
 @media (max-width: 992px) {
-    .loginPage .container {
+    .registerPage .regcontainer {
         width: 90%;
         height: 85vh;
         flex-direction: column;
@@ -336,7 +336,7 @@ img,video{
 }
 
 @media (max-width: 768px) {
-    .loginPage .container {
+    .registerPage .regcontainer {
         width: 95%;
         .videoDiv .textDiv .title {
             font-size: 36px;
@@ -348,7 +348,7 @@ img,video{
 }
 
 @media (max-width: 576px) {
-    .loginPage .container {
+    .registerPage .regcontainer {
         width: 100%;
         .videoDiv .textDiv .title {
             font-size: 24px;
