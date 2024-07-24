@@ -39,13 +39,60 @@
 }
 
 .mainSetting .icons {
+  position: relative;
+  display: inline-block;
   padding: 150px 50px 50px;
 }
 
-.mainSetting .icons .icon {
-  font-size: 15rem;
+.mainSetting .profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.mainSetting .profile-picture-preview {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--textColor);
   padding: 5px;
-  color: var(--textColor);
+}
+
+.mainSetting .icon {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+  padding: 5px;
+}
+
+.mainSetting .upload-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mainSetting .icons:hover .upload-label {
+  opacity: 1;
+}
+
+.mainSetting .file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  /* Hide the default file input */
+  cursor: pointer;
 }
 
 .mainSetting .content {
