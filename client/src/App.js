@@ -5,6 +5,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Register from './Components/Register/Register';
 import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
+import TimesUI from './Components/Dashboard/SideBar Section/Predictions/TimesUI';
 
 import {
   createBrowserRouter,
@@ -27,8 +28,11 @@ const router = createBrowserRouter([
   {
     path: '/editProfile',
     element: <div><Editprofile /></div>
-  }
-
+  },
+  {
+    path: '/timesUI',
+    element: <div><TimesUI/></div>
+  },
 ])
  
 function App() {

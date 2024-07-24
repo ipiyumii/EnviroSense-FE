@@ -28,6 +28,8 @@ const Editprofile = () => {
     const [passwordErrorMessage, setPasswordErrorMessage] = useState('');
     const [passwordMessage, setPasswordMessage] = useState('');
 
+    
+
     // const togglePersonalInfoVisibility = () => {
     //     setIsPersonalInfoVisible(!isPersonalInfoVisible);
     // };

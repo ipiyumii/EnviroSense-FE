@@ -66,7 +66,7 @@ const SideBar = () =>{
                         </li>
 
                         <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='timesUI' className='menuLink flex'>
                               <MdOutlineAccessTime className='icon'/>
                               <span className='smallText'>
                                     Times
