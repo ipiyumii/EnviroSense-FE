@@ -31,7 +31,6 @@
 
 .mainSetting h3 {
   white-space: nowrap;
-  /* Prevents text from wrapping */
   margin: 0;
   padding-top: 20px;
 }
@@ -89,7 +88,6 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  /* Hide the default file input */
   cursor: pointer;
 }
 

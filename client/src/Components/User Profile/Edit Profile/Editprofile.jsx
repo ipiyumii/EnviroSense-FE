@@ -1,26 +1,19 @@
-
-
 import React, { useEffect, useState } from 'react';
 import SideBar from '../../Dashboard/SideBar Section/SideBar';
 import './editprofile.scss';
 import { PiCaretRightFill } from "react-icons/pi";
-import { RiLockPasswordFill } from "react-icons/ri";
 import { FaUserCircle } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
-import axios from 'axios';
-import { CgArrowLongRight } from "react-icons/cg";
 import { MdMarkEmailRead } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa"; 
 
 const Editprofile = () => {
-    // const [isPersonalInfoVisible, setIsPersonalInfoVisible] = useState(false);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isEditable, setIsEditable] = useState(false);
     const [user, setUser] = useState({ username: '', email: '', phone: '', name: '', file_path: '' });
-    // const [user, setUser] = useState({ username: '', email: '', phone: '', name: ''});
     const [passwordData, setPasswordData] = useState({
       password: '', newPassword: '', confirmPassword: '' });
     const [errorMessage, setErrorMessage] = useState('');
@@ -31,12 +24,6 @@ const Editprofile = () => {
 
     const [profilePicture, setProfilePicture] = useState(null);
     const [profilePicturePreview, setProfilePicturePreview] = useState('');
-    
-
-    // const togglePersonalInfoVisibility = () => {
-    //     setIsPersonalInfoVisible(!isPersonalInfoVisible);
-    // };
-
 
     useEffect(() => {
       const fetchUserData = async () => {
@@ -59,13 +46,11 @@ const Editprofile = () => {
                   if (data.file_path) {
                     setProfilePicturePreview(`http://localhost:5000/${data.file_path}`);
                   }
-
               } else {
                 console.error('Error fetching user data:', response.statusText);
               }
           } catch (error) {
               console.error('Error fetching user data:', error);
-
           }
       };
       fetchUserData();
@@ -111,78 +96,66 @@ const Editprofile = () => {
       // setIsEditable(!isEditable);
   };
 
-
-
-  const handleEditClick = () => {
-    setIsEditable(true);
-    setMessage(''); 
-    setErrorMessage(''); 
-};
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUser(prevState => ({
-        ...prevState,
-        [name]: value
-    }));
-};
-
-// const handleProfilePictureChange = (e) => {
-//   const file = e.target.files[0];
-//   if (file) {
-//     setProfilePicture(file);
-//     setProfilePicturePreview(URL.createObjectURL(file));
-//   }
-// };
-
-const handleProfilePictureChange = async (e) => {
-  const file = e.target.files[0];
-  if (file) {
-    const objectURL = URL.createObjectURL(file);
-    setProfilePicture(file);
-    setProfilePicturePreview(objectURL);
-
-    // Upload the file immediately
-    const formData = new FormData();
-    formData.append('profilePicture', file);
-
-    const token = localStorage.getItem('token');
-    try {
-      const response = await fetch('http://localhost:5000/uploadprofilepicture', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-        body: formData,
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        console.log('Server response:', data); // Log the response to see the URL
-        setUser(prevState => ({
-          ...prevState,
-          profilePicture: data.file_url,
-        }));
-        // Optionally clean up the object URL
-        URL.revokeObjectURL(objectURL);
-      } else {
-        console.error('Error:', data.error);
-      }
-    } catch (error) {
-      console.error('Error uploading profile picture:', error);
-      // Optionally clean up the object URL in case of an error
-      URL.revokeObjectURL(objectURL);
-    }
-  }
-};
-
-  const togglePasswordVisibility = () => {
-    setIsPasswordVisible(!isPasswordVisible);
+    const handleEditClick = () => {
+      setIsEditable(true);
+      setMessage(''); 
+      setErrorMessage(''); 
   };
 
-  const toggleShowPassword = () => {
-    setShowPassword(!showPassword);
-};
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setUser(prevState => ({
+          ...prevState,
+          [name]: value
+      }));
+  };
+
+    const handleProfilePictureChange = async (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const objectURL = URL.createObjectURL(file);
+        setProfilePicture(file);
+        setProfilePicturePreview(objectURL);
+
+        // Upload the file
+        const formData = new FormData();
+        formData.append('profilePicture', file);
+
+        const token = localStorage.getItem('token');
+        try {
+          const response = await fetch('http://localhost:5000/uploadprofilepicture', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+            },
+            body: formData,
+          });
+          const data = await response.json();
+
+          if (response.ok) {
+            console.log('Server response:', data); 
+            setUser(prevState => ({
+              ...prevState,
+              profilePicture: data.file_url,
+            }));
+            URL.revokeObjectURL(objectURL);
+          } else {
+            console.error('Error:', data.error);
+          }
+        } catch (error) {
+          console.error('Error uploading profile picture:', error);
+          URL.revokeObjectURL(objectURL);
+        }
+      }
+    };
+
+    const togglePasswordVisibility = () => {
+      setIsPasswordVisible(!isPasswordVisible);
+    };
+
+    const toggleShowPassword = () => {
+      setShowPassword(!showPassword);
+    };
 
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
@@ -226,16 +199,19 @@ const handleProfilePictureChange = async (e) => {
     }
   };
 
+  // const capitalizeFirstLetter = (str) => {
+  //   if (str && typeof str === 'string' && str.length > 0) {
+  //     return str.charAt(0).toUpperCase() + str.slice(1);
+  //   }
+  //   return '';
+  // };
 
   return (
     <div className='editProfile'>
-     
         <SideBar />
-      
       <div className='mainSetting'>
-      <h3>Hey {user.name.charAt(0).toUpperCase() + user.name.slice(1)},</h3>
-        
-
+      {/* <h3>Hey {capitalizeFirstLetter(user.name || 'User')},</h3> */}
+      
       <div className='icons'>
         <div className='profile-container'>
           {profilePicturePreview ? (
@@ -274,7 +250,6 @@ const handleProfilePictureChange = async (e) => {
                 <button className='edit' onClick={handleEditClick}>Edit</button>
               </div>
 
-    
               <div className='form-group'>
                   <label htmlFor='name'>  <FaUser /> Name <span></span></label>
                     <input
@@ -301,18 +276,17 @@ const handleProfilePictureChange = async (e) => {
                     {/* <p>username has already taken!</p> */}
                     {errorMessage && <p className='error-msg'>{errorMessage}</p>}
                 </div>
-
                 <div className='form-group'>
                   <label htmlFor='email'> <MdMarkEmailRead/> Email <span></span></label>
-                    <input
-                      type='text'
-                      name='email'
-                      id='email'
-                      value={user.email}
-                      readOnly={!isEditable}
-                      onChange={handleChange}
-                      className={isEditable ? 'editable' : ''}
-                    />
+                  <input
+                    type='text'
+                    name='email'
+                    id='email'
+                    value={user.email}
+                    readOnly={!isEditable}
+                    onChange={handleChange}
+                    className={isEditable ? 'editable' : ''}
+                />
                 </div>
                 <div className='form-group'>
                   <label htmlFor='phone'> <BsFillTelephoneFill/> Phone/Mobile <span></span></label>
@@ -331,7 +305,6 @@ const handleProfilePictureChange = async (e) => {
                   <button type='submit' className='save' onClick={handleSaveClick}>Save</button>
                 </div>
               </div>
-            {/* )} */}
           </div>
 
           <div className='passwordContent'>
@@ -339,7 +312,6 @@ const handleProfilePictureChange = async (e) => {
               Password
               <PiCaretRightFill  /> 
             </div>
-
            
             {isPasswordVisible && (
               <div className='privacy-form'>
