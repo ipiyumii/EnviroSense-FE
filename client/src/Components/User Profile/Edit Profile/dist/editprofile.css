@@ -29,13 +29,11 @@
   margin-left: 2rem;
 }
 
-.mainSetting .mainheader {
-  padding-top: 3rem;
-}
-
-.mainSetting .mainheader h1 {
-  font-size: var(--biggestFontSize);
-  font-weight: bolder;
+.mainSetting h3 {
+  white-space: nowrap;
+  /* Prevents text from wrapping */
+  margin: 0;
+  padding-top: 20px;
 }
 
 .mainSetting .icons {
@@ -44,12 +42,12 @@
   padding: 150px 50px 50px;
 }
 
-.mainSetting .profile-container {
+.mainSetting .icons .profile-container {
   position: relative;
   display: inline-block;
 }
 
-.mainSetting .profile-picture-preview {
+.mainSetting .icons .profile-picture-preview {
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
@@ -58,7 +56,7 @@
   padding: 5px;
 }
 
-.mainSetting .icon {
+.mainSetting .icons .icon {
   width: 15rem;
   height: 15rem;
   border-radius: 50%;
@@ -66,7 +64,7 @@
   padding: 5px;
 }
 
-.mainSetting .upload-label {
+.mainSetting .icons .upload-label {
   position: absolute;
   top: 0;
   left: 0;
@@ -80,11 +78,11 @@
   transition: opacity 0.3s ease;
 }
 
-.mainSetting .icons:hover .upload-label {
+.mainSetting .icons .icons:hover .upload-label {
   opacity: 1;
 }
 
-.mainSetting .file-input {
+.mainSetting .icons .file-input {
   position: absolute;
   top: 0;
   left: 0;

@@ -19,8 +19,8 @@ const Editprofile = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const [isEditable, setIsEditable] = useState(false);
-    // const [user, setUser] = useState({ username: '', email: '', phone: '', name: '' });
-    const [user, setUser] = useState({ username: '', email: '', phone: '', name: '', profilePicture: '' });
+    const [user, setUser] = useState({ username: '', email: '', phone: '', name: '', file_path: '' });
+    // const [user, setUser] = useState({ username: '', email: '', phone: '', name: ''});
     const [passwordData, setPasswordData] = useState({
       password: '', newPassword: '', confirmPassword: '' });
     const [errorMessage, setErrorMessage] = useState('');
@@ -49,106 +49,68 @@ const Editprofile = () => {
                     'Authorization': `Bearer ${token}`
                 }
               });
-              const data = await response.json();
+              
               // const data = response.data;
-              if (!data.error) {
+              if (response.ok) {
+                  const data = await response.json();
+                  console.log('Received user data:', data);
                   setUser(data);
-                  setProfilePicturePreview(data.profilePicture); // Set initial profile picture
-                  console.log(user);
+
+                  if (data.file_path) {
+                    setProfilePicturePreview(`http://localhost:5000/${data.file_path}`);
+                  }
+
               } else {
-                  console.error(data.error);
-                  setMessage('Error fetching user data');
+                console.error('Error fetching user data:', response.statusText);
               }
           } catch (error) {
               console.error('Error fetching user data:', error);
-              setMessage('Error fetching user data');
+
           }
       };
       fetchUserData();
   }, []);
 
-  //   const handleSaveClick = async (e) => {
-  //     e.preventDefault();
-  //       try {
-  //           const token = localStorage.getItem('token');
-  //           const response = await fetch('http://localhost:5000/updateuser', {
-  //               method: 'POST',
-  //               headers: {
-  //                   'Content-Type': 'application/json',
-  //                   'Authorization': `Bearer ${token}`,
-  //               },
-  //               body: JSON.stringify(user),
-  //               credentials: 'include',
-  //           });
-  //           const data = await response.json();
-  //           if (response.ok) {
-  //               console.log('User data saved successfully');
-  //               setMessage('data saved successfully');
-  //               setErrorMessage('');
-  //               setIsEditable(false);
+    const handleSaveClick = async (e) => {
+      e.preventDefault();
+        try {
+            const token = localStorage.getItem('token');
+            const response = await fetch('http://localhost:5000/updateuser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(user),
+                credentials: 'include',
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('User data saved successfully');
+                setMessage('data saved successfully');
+                setErrorMessage('');
+                setIsEditable(false);
 
-  //                // Update localStorage with new token
-  //               const authHeader = response.headers.get('Authorization');
-  //               if (authHeader){
-  //                 const newToken = authHeader.split(' ')[1];
-  //                 localStorage.setItem('token', newToken);
-  //               }
-  //           } else {
-  //               console.error('Error:', data.message);
-  //               setErrorMessage(data.message);
-  //               setIsEditable(true);
-  //               // setMessage('Error saving user data');
-  //           }
-  //       } catch (error) {
-  //           console.error('Error:', error);
-  //           setMessage('Error saving user data');
-  //           // setIsEditable(true);
-  //       }
-  //     // setIsEditable(!isEditable);
-  // };
+                 // Update localStorage with new token
+                const authHeader = response.headers.get('Authorization');
+                if (authHeader){
+                  const newToken = authHeader.split(' ')[1];
+                  localStorage.setItem('token', newToken);
+                }
+            } else {
+                console.error('Error:', data.message);
+                setErrorMessage(data.message);
+                setIsEditable(true);
+                // setMessage('Error saving user data');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setMessage('Error saving user data');
+            // setIsEditable(true);
+        }
+      // setIsEditable(!isEditable);
+  };
 
-  const handleSaveClick = async (e) => {
-    e.preventDefault();
-      try {
-          const token = localStorage.getItem('token');
-          const formData = new FormData();
-          formData.append('username', user.username);
-          formData.append('email', user.email);
-          formData.append('phone', user.phone);
-          formData.append('name', user.name);
-          if (profilePicture) {
-            formData.append('profilePicture', profilePicture);
-          }
-
-          const response = await fetch('http://localhost:5000/updateuser', {
-              method: 'POST',
-              headers: {
-                  'Authorization': `Bearer ${token}`,
-              },
-              body: formData,
-              credentials: 'include',
-          });
-          const data = await response.json();
-          if (response.ok) {
-              setMessage('Data saved successfully');
-              setErrorMessage('');
-              setIsEditable(false);
-
-              const authHeader = response.headers.get('Authorization');
-              if (authHeader){
-                const newToken = authHeader.split(' ')[1];
-                localStorage.setItem('token', newToken);
-              }
-          } else {
-              console.error('Error:', data.message);
-              setErrorMessage(data.message);
-              setIsEditable(true);
-          }
-      } catch (error) {
-          console.error('Error:', error);
-          setMessage('Error saving user data');
-      }
-};
 
 
   const handleEditClick = () => {
@@ -165,11 +127,52 @@ const Editprofile = () => {
     }));
 };
 
-const handleProfilePictureChange = (e) => {
+// const handleProfilePictureChange = (e) => {
+//   const file = e.target.files[0];
+//   if (file) {
+//     setProfilePicture(file);
+//     setProfilePicturePreview(URL.createObjectURL(file));
+//   }
+// };
+
+const handleProfilePictureChange = async (e) => {
   const file = e.target.files[0];
   if (file) {
+    const objectURL = URL.createObjectURL(file);
     setProfilePicture(file);
-    setProfilePicturePreview(URL.createObjectURL(file));
+    setProfilePicturePreview(objectURL);
+
+    // Upload the file immediately
+    const formData = new FormData();
+    formData.append('profilePicture', file);
+
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch('http://localhost:5000/uploadprofilepicture', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Server response:', data); // Log the response to see the URL
+        setUser(prevState => ({
+          ...prevState,
+          profilePicture: data.file_url,
+        }));
+        // Optionally clean up the object URL
+        URL.revokeObjectURL(objectURL);
+      } else {
+        console.error('Error:', data.error);
+      }
+    } catch (error) {
+      console.error('Error uploading profile picture:', error);
+      // Optionally clean up the object URL in case of an error
+      URL.revokeObjectURL(objectURL);
+    }
   }
 };
 
@@ -230,55 +233,32 @@ const handleProfilePictureChange = (e) => {
         <SideBar />
       
       <div className='mainSetting'>
-      {/* <div className='mainheader'>
-        <h1>MY ACCOUNT  </h1>  
-      </div> */}
-        {/* <div className='icons'>
-        {profilePicturePreview ? (
-                <img 
-                  src={profilePicturePreview} 
-                  alt="Profile" 
-                  className="profile-picture-preview" 
-                />
-              ) : (
-                <FaUserCircle className='icon' />
-              )}
-              <label htmlFor='profilePicture' className='upload-label'>
-              <input
-                type='file'
-                name='profilePicture'
-                id='profilePicture'
-                accept='image/*'
-                onChange={handleProfilePictureChange}
-                className='file-input'
-              />
-              </label>
-         
-            </div> */}
+      <h3>Hey {user.name.charAt(0).toUpperCase() + user.name.slice(1)},</h3>
+        
 
-<div className='icons'>
-  <div className='profile-container'>
-    {profilePicturePreview ? (
-      <img 
-        src={profilePicturePreview} 
-        alt="Profile" 
-        className="profile-picture-preview" 
-      />
-    ) : (
-      <FaUserCircle className='icon' />
-    )}
-    <label htmlFor='profilePicture' className='upload-label'>
-      <input
-        type='file'
-        name='profilePicture'
-        id='profilePicture'
-        accept='image/*'
-        onChange={handleProfilePictureChange}
-        className='file-input'
-      />
-    </label>
-  </div>
-</div>
+      <div className='icons'>
+        <div className='profile-container'>
+          {profilePicturePreview ? (
+            <img 
+              src={profilePicturePreview} 
+              alt="Profile" 
+              className="profile-picture-preview" 
+            />
+          ) : (
+            <FaUserCircle className='icon' />
+          )}
+          <label htmlFor='profilePicture' className='upload-label'>
+            <input
+              type='file'
+              name='profilePicture'
+              id='profilePicture'
+              accept='image/*'
+              onChange={handleProfilePictureChange}
+              className='file-input'
+            />
+          </label>
+        </div>
+      </div>
 
         <div className='content'>
           <div className='accountSettings'>
@@ -321,6 +301,7 @@ const handleProfilePictureChange = (e) => {
                     {/* <p>username has already taken!</p> */}
                     {errorMessage && <p className='error-msg'>{errorMessage}</p>}
                 </div>
+
                 <div className='form-group'>
                   <label htmlFor='email'> <MdMarkEmailRead/> Email <span></span></label>
                     <input

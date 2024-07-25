@@ -32,73 +32,74 @@
     display: flex;
     margin-left: 2rem;
 
-    .mainheader {
-        padding-top: 3rem;
-        // margin-left: 4rem;
-
-        h1{
-          font-size: var(--biggestFontSize);
-          font-weight: bolder;
-        }
+    h3 {
+      white-space: nowrap; /* Prevents text from wrapping */
+      margin: 0;
+      padding-top: 20px;
     }
+    
 
     .icons {
         position: relative;
         display: inline-block;
         padding: 150px 50px 50px;
+      
+        .profile-container {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .profile-picture-preview {
+              width: 15rem;
+              height: 15rem;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 2px solid var(--textColor); // Optional
+              padding: 5px;
+        }
+        .icon {
+          width: 15rem;
+          height: 15rem;
+          border-radius: 50%;
+          object-fit: cover;
+          padding: 5px;
+        }
+        
+        .upload-label {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+        
+        .icons:hover .upload-label {
+          opacity: 1;
+        }
+        
+        .file-input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0; /* Hide the default file input */
+          cursor: pointer;
+        }
+        
+       
+      
+  
+      
       }
       
-      .profile-container {
-        position: relative;
-        display: inline-block;
-      }
       
-      .profile-picture-preview {
-            width: 15rem;
-            height: 15rem;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--textColor); // Optional
-            padding: 5px;
-      }
-      .icon {
-        width: 15rem;
-        height: 15rem;
-        border-radius: 50%;
-        object-fit: cover;
-        padding: 5px;
-      }
-      
-      .upload-label {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      
-      .icons:hover .upload-label {
-        opacity: 1;
-      }
-      
-      .file-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0; /* Hide the default file input */
-        cursor: pointer;
-      }
-      
-    
-
     .content {
         flex: 1;
         padding: 150px 50px 50px;
