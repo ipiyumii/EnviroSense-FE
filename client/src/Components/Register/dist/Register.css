@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+:root {
+  --primaryColor: hsl(94, 55%, 56%);
+  --hoverColor:hsl(93, 75%, 76%);
+  --paleGreen:hsl(96, 75%, 89%);
+  --whiteColor:hsl(0, 0%, 100%);
+  --blackColor:hsl(0, 0%, 18%);
+  --grayText:hsl(0, 0%, 75%);
+  --bgColor:hsl(113, 11%, 85%);
+  --inputColor:hsl(330, 12%, 97%);
+  --biggestFontSize:2.5rem;
+  --h1fontSize:1.5rem;
+  --h2fontSize:1.25rem;
+  --h3fontSize:1rem;
+  --normalfontSize:.938rem;
+  --smallfontSize:.813rem;
+  --smallestfontSize:.75rem;
+}
+
+.icon {
+  font-size: var(--h2fontSize);
+  cursor: pointer;
+}
+
+img, video {
+  height: auto;
+  width: 100%;
+}
+
+.message {
+  display: none;
+}
+
+.showMessageReg {
+  display: block;
+  color: var(--whiteColor);
+  background-color: red;
+  border-radius: 3px;
+  text-align: center;
+  padding: 3px;
+  margin: 0;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: var(--grayText);
+}
+
+.btn .icon {
+  margin-left: 0.5rem;
+}
+
+.btn :hover {
+  color: var(--primaryColor);
+  background: var(--paleGreen);
+}
+
+.registerPage {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 7px 50px #d6dfd5;
+}
+.registerPage .regcontainer {
+  height: 75vh;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: #e8e8e8;
+  display: flex;
+  flex-direction: row;
+}
+.registerPage .regcontainer .videoDiv {
+  text-align: center;
+  position: relative;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.registerPage .regcontainer .videoDiv video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.registerPage .regcontainer .videoDiv .textDiv {
+  position: relative;
+}
+.registerPage .regcontainer .videoDiv .textDiv .title {
+  color: var(--whiteColor);
+  font-size: 48px;
+  font-weight: 800;
+}
+.registerPage .regcontainer .videoDiv .textDiv p {
+  color: var(--whiteColor);
+  padding: 1rem;
+  font-weight: 400;
+}
+.registerPage .regcontainer .videoDiv .footerDiv {
+  position: absolute;
+  bottom: 10px;
+  padding: 0 1rem;
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.248);
+  left: 10px;
+  right: 10px;
+  justify-content: space-between;
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.registerPage .regcontainer .videoDiv .footerDiv .text {
+  color: var(--whiteColor);
+}
+.registerPage .regcontainer .videoDiv .footerDiv .btn {
+  background: var(--whiteColor);
+  color: var(--primaryColor);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.3s ease;
+  margin-top: 10px;
+  margin-left: 90px;
+}
+.registerPage .regcontainer .videoDiv .footerDiv .btn:hover {
+  background: var(--hoverColor);
+  color: var(--blackColor);
+}
+.registerPage .regcontainer .formDiv {
+  flex-basis: 50%;
+  flex-direction: column;
+  padding-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+.registerPage .regcontainer .formDiv .headerDiv {
+  text-align: center;
+}
+.registerPage .regcontainer .formDiv img {
+  width: 60px;
+  padding-bottom: 0.5rem;
+}
+.registerPage .regcontainer .formDiv h3 {
+  font-size: 25px;
+  color: var(--blackColor);
+  font-weight: 600;
+}
+.registerPage .regcontainer .formDiv .form {
+  gap: 1rem;
+}
+.registerPage .regcontainer .formDiv .form .inputDiv .icon {
+  color: var(--grayText);
+}
+.registerPage .regcontainer .formDiv .form .inputDiv input {
+  background: none;
+  outline: none;
+  border: none;
+  width: 200px;
+}
+.registerPage .regcontainer .formDiv .form .inputDiv label {
+  color: var(--blackColor);
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0.5rem 0;
+  display: block;
+}
+.registerPage .regcontainer .formDiv .form .inputDiv .input {
+  gap: 0.5rem;
+  padding: 1rem;
+  background: #f8f6f7;
+}
+.registerPage .regcontainer .formDiv .form .btn {
+  padding: 0.8rem;
+  background: var(--primaryColor);
+  border-radius: 10px;
+  color: var(--whiteColor);
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  font-size: 16px;
+  width: 100%;
+  gap: 0.5rem;
+  transition: 3s ease;
+}
+.registerPage .regcontainer .formDiv .form .btn .icon {
+  font-size: 25px;
+  transition: 3s ease;
+}
+.registerPage .regcontainer .formDiv .form .btn:hover {
+  background: var(--hoverColor);
+  color: var(--blackColor);
+}
+.registerPage .regcontainer .formDiv .form .btn:hover .icon {
+  color: var(--blackColor);
+  transform: translateX(5px);
+}
+
+@media (max-width: 1200px) {
+  .registerPage .regcontainer {
+    width: 80%;
+    height: 80vh;
+  }
+}
+@media (max-width: 992px) {
+  .registerPage .regcontainer {
+    width: 90%;
+    height: 85vh;
+    flex-direction: column;
+  }
+  .registerPage .regcontainer .videoDiv video {
+    object-fit: cover;
+  }
+  .registerPage .regcontainer .formDiv {
+    transform: translate(0);
+    margin-top: 20px;
+  }
+}
+@media (max-width: 768px) {
+  .registerPage .regcontainer {
+    width: 95%;
+  }
+  .registerPage .regcontainer .videoDiv .textDiv .title {
+    font-size: 36px;
+  }
+  .registerPage .regcontainer .formDiv .headerDiv h3 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 576px) {
+  .registerPage .regcontainer {
+    width: 100%;
+  }
+  .registerPage .regcontainer .videoDiv .textDiv .title {
+    font-size: 24px;
+  }
+  .registerPage .regcontainer .formDiv .headerDiv h3 {
+    font-size: 18px;
+  }
+  .registerPage .regcontainer .formDiv .form .inputDiv input {
+    width: 100%;
+  }
+}

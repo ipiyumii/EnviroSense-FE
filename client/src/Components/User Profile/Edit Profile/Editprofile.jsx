@@ -199,18 +199,18 @@ const Editprofile = () => {
     }
   };
 
-  // const capitalizeFirstLetter = (str) => {
-  //   if (str && typeof str === 'string' && str.length > 0) {
-  //     return str.charAt(0).toUpperCase() + str.slice(1);
-  //   }
-  //   return '';
-  // };
+  const capitalizeFirstLetter = (str) => {
+    if (str && typeof str === 'string' && str.length > 0) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+    return '';
+  };
 
   return (
     <div className='editProfile'>
         <SideBar />
       <div className='mainSetting'>
-      {/* <h3>Hey {capitalizeFirstLetter(user.name || 'User')},</h3> */}
+      <h3>Hey {capitalizeFirstLetter(user.name || 'User')},</h3>
       
       <div className='icons'>
         <div className='profile-container'>

@@ -67,9 +67,6 @@ const Login = () => {
         console.error('Google login error:', error);
     };
     
-    
-    
-
     return (
         <GoogleOAuthProvider clientId={clientId}> 
         <div className='loginPage flex'>
