@@ -1,6 +1,6 @@
 import './bincard.scss';
 
-const BinCard = ({imgSrc,title,times }) =>  {
+const BinCard = ({imgSrc,title,times,description }) =>  {
     const convertTo12HourFormat = (timeStr) => {
         const [hour, minute] = timeStr.split(':').map(Number);
         const ampm = hour >= 12 ? 'PM' : 'AM';
@@ -35,7 +35,7 @@ const BinCard = ({imgSrc,title,times }) =>  {
                         <p key={index}>{time}</p>  // Display each time on a new line
                     ))}
         </p>
-        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <p class="card-text"><small class="text-body-secondary">{description}</small></p>
         </div>
         </div>
         </div>

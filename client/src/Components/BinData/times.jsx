@@ -49,9 +49,6 @@ const Times = () =>  {
   }, []); 
 
   
-
-  
-    
     return (
         <div className="topmain">
                 <SideBar/>
@@ -63,6 +60,7 @@ const Times = () =>  {
                         imgSrc={image1} 
                         title="BIN b-01:"
                         times={bin.bin1.map(formatTime)}
+                        description="place"
                         
                     />
              </div>
@@ -71,6 +69,7 @@ const Times = () =>  {
                         imgSrc={image2} 
                         title="BIN b-02:"
                         times={bin.bin2.map(formatTime)}
+                        description="place"
                     />
              </div>
 

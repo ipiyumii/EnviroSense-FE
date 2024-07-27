@@ -57,7 +57,7 @@ const SideBar = () =>{
                         </li>
 
                         <li className='listItem'>
-                              <a href='' className='menuLink flex'>
+                              <a href='#' className='menuLink flex'>
                               <RiDeleteBin3Line className='icon'/>
                               <span className='smallText'>
                                     Bin levels
@@ -75,7 +75,7 @@ const SideBar = () =>{
                         </li>
 
                         <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='/wastechart' className='menuLink flex'>
                               <FaChartLine className='icon'/>
                               <span className='smallText'>
                                     Charts

@@ -7,7 +7,7 @@ import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
 import BinCard from './Components/BinData/BinCard/bincard';
 import Times from './Components/BinData/times';
-
+import WasteChart from './Components/BinData/BinCard/Charts/wasteChart';
 import {
   createBrowserRouter,
   RouterProvider
@@ -38,7 +38,10 @@ const router = createBrowserRouter([
     path: '/bincard',
     element: <div> <BinCard/> </div>
   },
-
+  {
+    path: '/wastechart',
+    element: <div> <WasteChart/> </div>
+  },
 
 ])
  

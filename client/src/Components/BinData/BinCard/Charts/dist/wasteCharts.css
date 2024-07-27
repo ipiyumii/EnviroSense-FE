@@ -1,0 +1,16 @@
+.maincontainer {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  border-radius: 1rem;
+  background: #e8e8e8;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 2px 2px 8px var(--grayText);
+  display: flex;
+  margin: auto;
+  padding: 1rem;
+  max-width: 100vw;
+}
+
+/*# sourceMappingURL=wasteCharts.css.map */
