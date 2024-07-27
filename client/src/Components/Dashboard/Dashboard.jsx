@@ -11,6 +11,8 @@ const Dashboard = () =>{
           <SideBar/>
           <Body/>
       </div>
+
+    
       );
 }
 export default Dashboard

@@ -5,7 +5,8 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Register from './Components/Register/Register';
 import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
-import TimesUI from './Components/Dashboard/SideBar Section/Predictions/TimesUI';
+import BinCard from './Components/BinData/BinCard/bincard';
+import Times from './Components/BinData/times';
 
 import {
   createBrowserRouter,
@@ -30,9 +31,15 @@ const router = createBrowserRouter([
     element: <div><Editprofile /></div>
   },
   {
-    path: '/timesUI',
-    element: <div><TimesUI/></div>
+    path: '/times',
+    element: <div> <Times/> </div>
   },
+  {
+    path: '/bincard',
+    element: <div> <BinCard/> </div>
+  },
+
+
 ])
  
 function App() {

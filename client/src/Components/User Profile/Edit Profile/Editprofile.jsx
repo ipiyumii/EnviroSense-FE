@@ -307,7 +307,7 @@ const Editprofile = () => {
               </div>
           </div>
 
-          <div className='passwordContent'>
+          {/* <div className='passwordContent'>
           <div className='mainHead1' onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
               Password
               <PiCaretRightFill  /> 
@@ -358,7 +358,7 @@ const Editprofile = () => {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
