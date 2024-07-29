@@ -6,13 +6,13 @@ import video from '../../../../LoginAssests/video.mp4';
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { useNavigate } from 'react-router-dom';
-import { BiSolidMessageRoundedDots } from "react-icons/bi";
+import { IoMdNotifications } from "react-icons/io";
+import NavBar from '../../../NavBar/navbar';
 
 const Top = () => {
   const [username, setUsername] = useState('');
   const [user, setUser] = useState({ username: '', email: '', phone: '', name: '', file_path: '' });
   const navigate = useNavigate();
-  const [profilePicturePreview, setProfilePicturePreview] = useState('');
 
   useEffect(() => {
       const storedUsername = localStorage.getItem('username');
@@ -38,10 +38,6 @@ const Top = () => {
                   const data = await response.json();
                   console.log('Received user data:', data);
                   setUser(data);
-
-                  if (data.file_path) {
-                    setProfilePicturePreview(`http://localhost:5000/${data.file_path}`);
-                  }
               } else {
                 console.error('Error fetching user data:', response.statusText);
               }
@@ -52,9 +48,6 @@ const Top = () => {
       fetchUserData();
   }, []);
 
-  const handleProfileClick = () => {
-    navigate('/editProfile');
-  };
 
   return (
     <div className='topSection'>
@@ -64,20 +57,9 @@ const Top = () => {
           <p>Hello {username}, Welcome Back!</p>
         </div>
 
-        <div className='adminDiv flex'>
-          
-          {/* <FaCircleUser className='icon' onClick={handleProfileClick}/> */}
-
-          {profilePicturePreview ? (
-            <img 
-              src={profilePicturePreview} 
-              alt="Profile" 
-              className="profile-picture-preview" 
-            />
-          ) : (
-            <FaCircleUser className='icon' onClick={handleProfileClick}/>
-          )}
-        </div>
+          <div className='adminDiv flex'>
+            <NavBar/>
+          </div>
       </div>
       
       <div className='cardSection flex'>

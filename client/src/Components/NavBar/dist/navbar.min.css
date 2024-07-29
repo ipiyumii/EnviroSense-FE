@@ -1,0 +1,2 @@
+.navbar{position:fixed;top:0;right:0;width:auto;z-index:1000;padding:10px}.navbar .bellicon,.navbar .profile-picture-preview,.navbar .usericon{border-radius:50%;padding:5px;position:relative}.navbar .usericon{width:3.5rem;height:3.5rem;font-size:3.5rem;color:var(--grayText);margin-left:3px}.navbar .bellicon{width:3rem;height:3rem;font-size:2rem;color:var(--grayText)}.navbar .profile-picture-preview{width:4rem;height:4rem;object-fit:cover}.navbar .bellicon,.navbar .profile-picture-preview,.navbar .usericon{cursor:pointer}
+/*# sourceMappingURL=navbar.min.css.map */

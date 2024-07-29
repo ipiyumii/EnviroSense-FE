@@ -13,7 +13,6 @@ import { MdMarkEmailRead } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 
 const Register = () => {
-
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [username, setUsername] = useState('');

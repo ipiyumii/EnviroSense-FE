@@ -1,0 +1,45 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: auto;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.navbar .usericon {
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 3.5rem;
+  border-radius: 50%;
+  padding: 5px;
+  position: relative;
+  color: var(--grayText);
+  margin-left: 3px;
+}
+
+.navbar .bellicon {
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: 5px;
+  position: relative;
+  color: var(--grayText);
+}
+
+.navbar .profile-picture-preview {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  object-fit: cover;
+  position: relative;
+  padding: 5px;
+  position: relative;
+}
+
+.navbar .usericon, .navbar .profile-picture-preview, .navbar .bellicon {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=navbar.css.map */

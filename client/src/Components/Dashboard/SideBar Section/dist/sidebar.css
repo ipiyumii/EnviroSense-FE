@@ -18,7 +18,7 @@
 }
 
 .sideBar {
-  background-color: var(--whiteColor);
+  background-color: var(--blackColor);
   box-shadow: 1px 0px 4px var(--grayText);
   max-width: 18%;
   width: 18%;
@@ -49,6 +49,7 @@
 .sideBar .logoDiv h2 {
   font-size: var(--h2fontSize);
   color: var(--primaryColor);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .sideBar .settingDiv {
@@ -62,8 +63,9 @@
 
 .sideBar .menuDiv .divTitle, .sideBar .settingDiv .divTitle {
   font-size: var(--h3fontSize);
-  color: var(--blackColor);
+  color: var(--whiteColor);
   padding: 0 1.5rem 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .sideBar .menuDiv .menuLists .listItem, .sideBar .settingDiv .menuLists .listItem {

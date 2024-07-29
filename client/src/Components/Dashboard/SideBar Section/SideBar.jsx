@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import './sidebar.scss';
 import logo from '../../../LoginAssests/logo.jpeg';
 import { IoMdSpeedometer } from "react-icons/io";
@@ -7,6 +6,7 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { FaChartLine } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
+import { IoMdNotifications } from "react-icons/io";
 
 
 const SideBar = () =>{
@@ -57,7 +57,7 @@ const SideBar = () =>{
                         </li>
 
                         <li className='listItem'>
-                              <a href='#' className='menuLink flex'>
+                              <a href='/binlevel' className='menuLink flex'>
                               <RiDeleteBin3Line className='icon'/>
                               <span className='smallText'>
                                     Bin levels
@@ -97,6 +97,15 @@ const SideBar = () =>{
                               <FaUser className='icon'/>
                               <span className='smallText'>
                                     Account
+                              </span>
+                              </a>
+                              </li>
+
+                              <li className='listItem'>
+                              <a href='notification' className='menuLink flex'>
+                              <IoMdNotifications className='icon'/>
+                              <span className='smallText'>
+                                    Notification
                               </span>
                               </a>
                               </li>

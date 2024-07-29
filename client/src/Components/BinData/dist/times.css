@@ -2,7 +2,6 @@
   position: relative;
   height: 100vh;
   width: 100vw;
-  border-radius: 1rem;
   background: #e8e8e8;
   overflow: hidden;
   display: flex;
@@ -11,11 +10,48 @@
   margin: auto;
   padding: 1rem;
   max-width: 100vw;
+  background-color: #2e2e2e;
 }
 
 .topmain .cardcontainer {
-  border: none;
-  padding: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.topmain .cardcontainer .col-md-6, .topmain .cardcontainer .col-lg-4 {
+  display: flex;
+}
+
+.topmain .cardcontainer .col-md-6 .card, .topmain .cardcontainer .col-lg-4 .card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  height: 13rem;
+}
+
+.topmain .cardcontainer .col-md-6 .card img, .topmain .cardcontainer .col-lg-4 .card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.topmain .cardcontainer .col-md-6 .card h2, .topmain .cardcontainer .col-lg-4 .card h2 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.topmain .cardcontainer .col-md-6 .card p, .topmain .cardcontainer .col-lg-4 .card p {
+  font-size: 1rem;
+}
+
+.topmain .cardcontainer .col-md-6 .card .times, .topmain .cardcontainer .col-lg-4 .card .times {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 /*# sourceMappingURL=times.css.map */

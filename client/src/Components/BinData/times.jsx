@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import SideBar from '../Dashboard/SideBar Section/SideBar';
-import { FaTrashAlt } from 'react-icons/fa';
 import BinCard from './BinCard/bincard';
 import './times.scss';
-import image1 from './bindataAssests/bin3.webp';
-import image2 from './bindataAssests/bin3.webp';
+import defaultImage from './bindataAssests/bin3.webp';
+import NavBar from '../NavBar/navbar';
+// import image2 from './bindataAssests/bin3.webp';
 
 const formatTime = (timeStr) => {
     const [hour, minute] = timeStr.split(':').map(Number);
@@ -14,7 +14,8 @@ const formatTime = (timeStr) => {
 };
 
 const Times = () =>  {
-    const [bin, setBin] = useState ({bin1: [], bin2: []});
+    // const [bin, setBin] = useState ({bin1: [], bin2: []});
+    const [bins, setBins] = useState([]);
 
     useEffect(() => {
         const fetchPredictedTimes = async() => {
@@ -32,10 +33,12 @@ const Times = () =>  {
                     const binData = await response.json();
                     console.log("Predicted times: ",binData);
 
-                    setBin({
-                       bin1: binData.bin1_next_day_prediction,
-                        bin2: binData.bin2_next_day_prediction
-                      });
+                    // setBin({
+                    //    bin1: binData.bin1_next_day_prediction,
+                    //     bin2: binData.bin2_next_day_prediction
+                    //   });
+
+                    setBins(binData);
                 }
                 else  {
                     console.error('Error fetching bin data:', response.statusText);
@@ -48,33 +51,26 @@ const Times = () =>  {
 
   }, []); 
 
-  
     return (
         <div className="topmain">
-                <SideBar/>
+            <SideBar/>
+
+            <div className="navbar"> <NavBar/> </div>
         
              <div className="row cardcontainer">
-
-             <div className="col-md-8 col-lg-6 mb-2 mt-4">
-                <BinCard 
-                        imgSrc={image1} 
-                        title="BIN b-01:"
-                        times={bin.bin1.map(formatTime)}
-                        description="place"
-                        
-                    />
-             </div>
-             <div className="col-md-6 col-lg-4 mb-4 mt-4"> 
-                <BinCard 
-                        imgSrc={image2} 
-                        title="BIN b-02:"
-                        times={bin.bin2.map(formatTime)}
-                        description="place"
-                    />
-             </div>
-
+                <div className="row cardcontainer">
+                    {bins.map((bin) => (
+                            <div key={bin.bin_no} className="col-md-6 col-lg-4 mb-4 mt-4">
+                                <BinCard
+                                    imgSrc={defaultImage}
+                                    title={`BIN ${bin.bin_no}:`}
+                                    times={bin.predictions.map(formatTime)}
+                                    description="place"
+                                />
+                            </div>
+                        ))}
+                </div>
            </div>
-
            <div className="topmenu">
 
            </div>

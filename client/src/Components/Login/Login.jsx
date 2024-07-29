@@ -3,10 +3,8 @@ import './Login.scss';
 import '../../App.css';
 import video from '../../LoginAssests/video.mp4';
 import logo from '../../LoginAssests/logo.jpeg';
-
 import { Link } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-
 import { FaUserShield } from 'react-icons/fa';
 import { BsFillShieldLockFill } from 'react-icons/bs';
 import { AiOutlineSwapRight } from 'react-icons/ai';
@@ -17,7 +15,7 @@ const Login = () => {
     const [message, setMessage] = useState('');
     const clientId = '967460610118-g4oul1g5umkiu6heanm2ornah4hektvu.apps.googleusercontent.com';
 
-    // handle login form submission
+    //handle login form submission
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
@@ -42,7 +40,7 @@ const Login = () => {
             setMessage('failed!');
         }
     }
-
+    //handle google login
     const handleGoogleLogin = (response) => {
         console.log('Google login response:', response);
 

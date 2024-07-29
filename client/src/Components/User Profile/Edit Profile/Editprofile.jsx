@@ -8,6 +8,8 @@ import { MdMarkEmailRead } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa"; 
+import NavBar from '../../NavBar/navbar';
+import { useNavigate } from 'react-router-dom';
 
 const Editprofile = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -117,7 +119,6 @@ const Editprofile = () => {
         setProfilePicture(file);
         setProfilePicturePreview(objectURL);
 
-        // Upload the file
         const formData = new FormData();
         formData.append('profilePicture', file);
 
@@ -208,7 +209,10 @@ const Editprofile = () => {
 
   return (
     <div className='editProfile'>
-        <SideBar />
+        <SideBar/>
+        <div className="navbar">
+            <NavBar/>
+           </div>
       <div className='mainSetting'>
       <h3>Hey {capitalizeFirstLetter(user.name || 'User')},</h3>
       
@@ -302,7 +306,7 @@ const Editprofile = () => {
                   {message && <p className='success-msg'>{message}</p>}
                 </div>
                 <div className='btns'>
-                  <button type='submit' className='save' onClick={handleSaveClick}>Save</button>
+                  <button type='submit' className='save' onClick={handleSaveClick}>SAVE</button>
                 </div>
               </div>
           </div>

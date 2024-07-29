@@ -23,8 +23,9 @@
   height: auto;
   display: flex;
   position: relative;
-  border-radius: 1rem;
-  background: #e8e8e8;
+  height: 100vh;
+  width: 100vw;
+  background-color: #2e2e2e;
   overflow: hidden;
   display: flex;
   box-shadow: 2px 2px 8px var(--grayText);
@@ -39,10 +40,15 @@
   margin-left: 2rem;
 }
 
+.mainSetting .sidebar {
+  position: fixed;
+  max-width: 18%;
+}
+
 .mainSetting h3 {
   white-space: nowrap;
-  margin: 0;
   padding-top: 20px;
+  color: var(--primaryColor);
 }
 
 .mainSetting .icons {
@@ -128,6 +134,7 @@
   padding: 0.8rem;
   color: var(--whiteColor);
   font-size: var(--h3fontSize);
+  font-weight: 700;
   margin-top: 1rem;
   cursor: pointer;
   border: none;
@@ -147,8 +154,8 @@
 .mainSetting .accountSettings .mainHead1 {
   font-size: var(--h1fontSize);
   margin-bottom: 20px;
-  color: var(--blackColor);
-  font-weight: bolder;
+  color: var(--whiteColor);
+  font-weight: 700;
 }
 
 .mainSetting .accountSettings .form .form-group {
@@ -156,18 +163,19 @@
   flex-direction: column;
   width: 80%;
   margin: 20px;
+  color: var(--whiteColor);
+  font-weight: 700;
 }
 
 .mainSetting .accountSettings .form .form-group input {
   padding: 10px;
   border: none;
-  border-bottom: 0.5px solid #ccc;
+  border-bottom: 2px solid var(--whiteColor);
   outline: none;
   font-size: 1rem;
-  transition: border-color 0.3s;
-  color: gray;
-  font: bolder;
+  background-color: transparent;
   padding-left: 3rem;
+  color: var(--primaryColor);
 }
 
 .mainSetting .accountSettings .form .form-group input.editable {
@@ -176,7 +184,7 @@
 }
 
 .mainSetting .accountSettings .form .form-group input:focus {
-  border-color: #007BFF;
+  border-color: var(--primaryColor);
   outline: none;
 }
 

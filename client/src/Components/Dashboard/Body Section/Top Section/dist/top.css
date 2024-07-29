@@ -5,14 +5,15 @@
 }
 
 .topSection .headerSection .title h1 {
-  font-size: var(--h1fontSize);
-  color: var(--blackColor);
+  font-size: 2rem;
+  color: var(--whiteColor);
   font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .topSection .headerSection .title p {
   font-size: var(--normalfontSize);
-  color: var(--textColor);
+  color: var(--whiteColor);
   font-weight: 500;
 }
 
@@ -21,24 +22,6 @@
   display: flex;
   align-items: center;
   margin-left: auto;
-}
-
-.topSection .headerSection .adminDiv .icon {
-  font-size: 4rem;
-  border-radius: 5px;
-  padding: 5px;
-  box-shadow: 0 2px 4px var(--inputColor);
-  color: var(--textColor);
-}
-
-.topSection .headerSection .adminDiv .profile-picture-preview {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  object-fit: cover;
-  position: relative;
-  top: -30px;
-  right: -30px;
 }
 
 .topSection .cardSection {

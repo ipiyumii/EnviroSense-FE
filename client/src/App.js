@@ -8,6 +8,9 @@ import './App.scss';
 import BinCard from './Components/BinData/BinCard/bincard';
 import Times from './Components/BinData/times';
 import WasteChart from './Components/BinData/BinCard/Charts/wasteChart';
+import BinLevel from './Components/BinData/BinLevels/billevel';
+import BinAlert from './Components/Alert/binAlert';
+import Notification from './Components/Notification/notification';
 import {
   createBrowserRouter,
   RouterProvider
@@ -42,7 +45,19 @@ const router = createBrowserRouter([
     path: '/wastechart',
     element: <div> <WasteChart/> </div>
   },
-
+  {
+    path: '/binlevel',
+    element: <div> <BinLevel/> </div>
+  },
+  {
+    path: '/alert',
+    element: <div> <BinAlert/> </div>
+  },
+  {
+    path: '/notification',
+    element: <div> <Notification/> </div>
+  },
+ 
 ])
  
 function App() {

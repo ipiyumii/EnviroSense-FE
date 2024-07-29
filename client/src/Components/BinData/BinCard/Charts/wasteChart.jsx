@@ -5,6 +5,8 @@ import { DatePicker } from 'antd'; // Make sure antd is installed
 import moment from 'moment';
 import SideBar from '../../../Dashboard/SideBar Section/SideBar';
 import './wasteCharts.scss';
+import { useNavigate } from 'react-router-dom';
+import NavBar from '../../../NavBar/navbar';
 
 const WasteChart = () => {
     const [data, setData] = useState([]);
@@ -62,7 +64,7 @@ const WasteChart = () => {
 
     const handleMonthChange = (value) => {
         setMonth(value);
-        setWeek(null); // Reset week selection when month changes
+        setWeek(null); 
     };
 
     const handleWeekChange = (value) => {
@@ -89,7 +91,10 @@ const WasteChart = () => {
     return (
         <div className='maincontainer' style={{ display: 'flex' }}>
             <SideBar />
-            <div style={{ flex: 1, backgroundColor: '#333', padding: '20px', borderRadius: '8px', marginTop: '50px' }}>
+            <div className="navbar">
+            <NavBar/>
+           </div>
+            <div className='chart' style={{ flex: 1, backgroundColor: '#333', padding: '20px', borderRadius: '8px', marginTop: '50px' }}>
                 {/* <h1 style={{ color: '#fff' }}>Waste Collection Analysis</h1> */}
                 <DatePicker
                     picker="month"
@@ -132,6 +137,8 @@ const WasteChart = () => {
                     </LineChart>
                 </ResponsiveContainer>
             </div>
+
+           
         </div>
     );
 };
