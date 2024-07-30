@@ -1,0 +1,43 @@
+
+
+
+.notificationcontent {
+    width: 950px;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 8px var(--grayText);
+
+    main {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .notificationcard {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+
+        img {
+            width: 50px;
+            border-radius: 50%;
+        }
+
+        .description {
+            margin-left: 20px;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            color: var(--whiteColor);
+        }
+
+        .unread {
+            font-weight: 700;
+        }
+
+        .read {
+            font-weight: normal;
+        }
+    }
+}
+

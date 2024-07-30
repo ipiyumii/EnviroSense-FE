@@ -7,10 +7,10 @@ import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
 import BinCard from './Components/BinData/BinCard/bincard';
 import Times from './Components/BinData/times';
-import WasteChart from './Components/BinData/BinCard/Charts/wasteChart';
 import BinLevel from './Components/BinData/BinLevels/billevel';
 import BinAlert from './Components/Alert/binAlert';
 import Notification from './Components/Notification/notification';
+import WasteChart from './Components/BinData/Charts/wasteChart';
 import {
   createBrowserRouter,
   RouterProvider

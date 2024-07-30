@@ -179,7 +179,7 @@
 }
 
 .mainSetting .accountSettings .form .form-group input.editable {
-  color: var(--blackColor);
+  color: var(--paleGreen);
   font-style: italic;
 }
 

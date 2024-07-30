@@ -3,10 +3,10 @@ import axios from 'axios';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { DatePicker } from 'antd'; // Make sure antd is installed
 import moment from 'moment';
-import SideBar from '../../../Dashboard/SideBar Section/SideBar';
+import SideBar from '../../Dashboard/SideBar Section/SideBar';
 import './wasteCharts.scss';
 import { useNavigate } from 'react-router-dom';
-import NavBar from '../../../NavBar/navbar';
+import NavBar from '../../NavBar/navbar';
 
 const WasteChart = () => {
     const [data, setData] = useState([]);

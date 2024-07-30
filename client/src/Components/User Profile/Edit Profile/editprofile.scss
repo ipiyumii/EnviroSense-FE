@@ -73,7 +73,7 @@
               height: 15rem;
               border-radius: 50%;
               object-fit: cover;
-              border: 2px solid var(--textColor); // Optional
+              border: 2px solid var(--textColor); 
               padding: 5px;
         }
         .icon {
@@ -187,7 +187,7 @@
                     color: var(--primaryColor);
                     
                     &.editable {
-                      color: var(--blackColor); 
+                      color: var(--paleGreen); 
                       // border: 1px solid gray; 
                       font-style: italic;
                   }
