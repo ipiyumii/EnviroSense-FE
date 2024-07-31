@@ -1,7 +1,6 @@
 .maincontainer{
-    height: 100vh; // Full viewport height
-    overflow: hidden; // Prevent overflow from parent container
-
+    height: 100vh; 
+    overflow: hidden; 
 
     .notificationcontainer {
         width: 1000px;
@@ -50,11 +49,9 @@
             color: var(--whiteColor);
         }
         .notificationcontent {
-            margin-bottom: 1.5rem; // Adjust this value to increase or decrease the gap
+            margin-bottom: 1.5rem; 
         }
      }
-
-
     .read {
         font-weight: normal;
     }

@@ -1,2 +1,2 @@
-.binlevel .maincontainer{position:fixed;height:100vh;width:100vw;overflow:hidden;display:flex}.binlevel .alert{align-items:center;padding-left:20rem;padding-top:3rem}
+.binlevel .maincontainer{position:fixed;height:100vh;width:100vw;background:#2e2e2e;overflow:hidden;box-shadow:2px 2px 8px var(--grayText);display:flex;margin:auto;padding:1rem;max-width:100vw}.binlevel .alert{align-items:center;padding-left:20rem;padding-top:3rem}
 /*# sourceMappingURL=binlevel.min.css.map */

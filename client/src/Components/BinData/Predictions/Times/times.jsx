@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import SideBar from '../Dashboard/SideBar Section/SideBar';
-import BinCard from './BinCard/bincard';
+import SideBar from '../../../Dashboard/SideBar Section/SideBar';
+import BinCard from '../../BinCard/bincard';
 import './times.scss';
-import defaultImage from './bindataAssests/bin3.webp';
-import NavBar from '../NavBar/navbar';
+import defaultImage from '../../bindataAssests/bin3.webp';
+import NavBar from '../../../NavBar/navbar';
 // import image2 from './bindataAssests/bin3.webp';
 
 const formatTime = (timeStr) => {
@@ -14,8 +14,8 @@ const formatTime = (timeStr) => {
 };
 
 const Times = () =>  {
-    // const [bin, setBin] = useState ({bin1: [], bin2: []});
     const [bins, setBins] = useState([]);
+   
 
     useEffect(() => {
         const fetchPredictedTimes = async() => {
@@ -33,12 +33,9 @@ const Times = () =>  {
                     const binData = await response.json();
                     console.log("Predicted times: ",binData);
 
-                    // setBin({
-                    //    bin1: binData.bin1_next_day_prediction,
-                    //     bin2: binData.bin2_next_day_prediction
-                    //   });
-
                     setBins(binData);
+
+
                 }
                 else  {
                     console.error('Error fetching bin data:', response.statusText);
@@ -47,6 +44,7 @@ const Times = () =>  {
                 console.error('Error fetching user data:', error);
             }
         };
+
         fetchPredictedTimes();
 
   }, []); 
@@ -72,8 +70,9 @@ const Times = () =>  {
                 </div>
            </div>
            <div className="topmenu">
-
+           
            </div>
+
         </div>
     );
 };

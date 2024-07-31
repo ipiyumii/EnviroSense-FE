@@ -6,7 +6,7 @@ import Register from './Components/Register/Register';
 import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
 import BinCard from './Components/BinData/BinCard/bincard';
-import Times from './Components/BinData/times';
+import Times from './Components/BinData/Predictions/Times/times';
 import BinLevel from './Components/BinData/BinLevels/billevel';
 import BinAlert from './Components/Alert/binAlert';
 import Notification from './Components/Notification/notification';

@@ -1,10 +1,8 @@
-.maincontainer {
+.chartcontainer {
   position: relative;
-  height: 100vh;
-  width: 100vw;
+  height: 150vh;
   background: #e8e8e8;
   overflow: hidden;
-  display: flex;
   box-shadow: 2px 2px 8px var(--grayText);
   display: flex;
   margin: auto;
@@ -13,11 +11,92 @@
   background-color: #2e2e2e;
 }
 
-.maincontainer .chart {
+.chartcontainer .chart {
   margin-left: 20px;
   width: 15rem;
   height: 33rem;
+}
+
+.chartcontainer .donut {
+  box-shadow: 2px 2px 8px var(--grayText);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  overflow: hidden;
+  margin-left: 2rem;
+  padding: 1rem;
+  width: 30rem;
+  max-width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chartcontainer .donut .bin-selector .drop-down {
+  color: var(--whiteColor);
+}
+
+.chartcontainer .donut .donutchart {
+  margin-left: 1rem;
+  display: flex;
+}
+
+.chartcontainer .linechart-container {
+  height: 42rem;
   box-shadow: 1px 0px 4px var(--grayText);
+  overflow: hidden;
+  margin-left: 2rem;
+  margin-top: 5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.chartcontainer .linechart-container .linechart {
+  width: 100vh;
+  max-width: 100vw;
+  display: flex;
+}
+
+.chartcontainer .linechart-container .title1 {
+  padding: 0;
+  margin-bottom: 0rem;
+}
+
+.chartcontainer h3 {
+  color: var(--grayText);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-size: var(--h2fontSize);
+}
+
+.chartcontainer .drop-down {
+  color: var(--whiteColor);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.chartcontainer #bin-select {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  appearance: none;
+  cursor: pointer;
+}
+
+.chartcontainer #bin-select:hover {
+  background-color: #444;
+}
+
+.chartcontainer #bin-select:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 /*# sourceMappingURL=wasteCharts.css.map */

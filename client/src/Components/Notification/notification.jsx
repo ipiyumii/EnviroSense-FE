@@ -16,7 +16,6 @@ const Notification = () => {
         return notifications.filter(decision => !decision.read).length;
     });
 
-
         const fetchDecision = async() => {
             const token = localStorage.getItem('token'); 
             try {
@@ -50,7 +49,7 @@ const Notification = () => {
                     });
 
                     const combinedDecisions = [...decisions, ...notificationsWithTimestamp];
-                    // Sort notifications to ensure newest first
+
                     combinedDecisions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                     
                     setDecisions(combinedDecisions);
@@ -75,8 +74,8 @@ const Notification = () => {
                 const lastFetchTimeMs = new Date(lastFetchTime).getTime();
                 const timeDifference = currentTime - lastFetchTimeMs;
     
-                // if (timeDifference >= 12 * 60 * 60 * 1000)
-                    if (timeDifference >= 1)
+                if (timeDifference >= 12 * 60 * 60 * 1000)
+                    // if (timeDifference >= 1)
                      {
                     fetchDecision(); 
                 }
