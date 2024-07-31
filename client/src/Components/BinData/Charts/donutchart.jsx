@@ -9,7 +9,7 @@ const DonutChartComponent = ({ binNo }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/bin-data`, {
+                const response = await axios.get(`http://localhost:5000/historical-data`, {
                     params: { bin_no: binNo }
                 });
                 const result = response.data;
