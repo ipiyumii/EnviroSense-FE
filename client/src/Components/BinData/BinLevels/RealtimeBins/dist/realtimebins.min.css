@@ -1,0 +1,2 @@
+.bins,.range__wrapper{position:relative;width:320px;height:480px;margin:20px auto}.range__input{position:absolute;width:100%;height:100%;opacity:0}.range__slider{position:absolute;top:0;left:0}.range__value{position:absolute;font-size:24px;color:#fff}.range__value--top{top:10px;right:10px}.range__value--bottom{bottom:10px;right:10px}.bin-info{margin-top:10px;background-color:#fff;color:#000;padding:10px;border-radius:5px;box-shadow:0 0 5px rgba(0,0,0,.2)}
+/*# sourceMappingURL=realtimebins.min.css.map */

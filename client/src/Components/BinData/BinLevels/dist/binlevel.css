@@ -1,10 +1,6 @@
-.binlevel .maincontainer {
-  position: fixed;
+.maincontainer {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
-  display: flex;
-  background-color: #2e2e2e;
   background: #e8e8e8;
   overflow: hidden;
   box-shadow: 2px 2px 8px var(--grayText);
@@ -15,10 +11,57 @@
   background-color: #2e2e2e;
 }
 
-.binlevel .alert {
+.maincontainer .navbar {
+  margin-left: 20rem;
+  /* Offset by sidebar width */
+  padding: 1rem;
+}
+
+.maincontainer .binlevel-body {
+  flex: 1;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.maincontainer .binlevel-body .alert {
+  width: 100%;
+  padding-left: 20px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.maincontainer .binlevel-body .realtime-data {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding-left: 20rem;
-  padding-top: 3rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.maincontainer .binlevel-body .realtime-data .MuiBox-root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* Add space between cards */
+}
+
+.maincontainer .binlevel-body .realtime-bin {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow wrapping if needed */
+  gap: 10px;
+}
+
+.maincontainer .binlevel-body .realtime-bin .realtime-bin > div {
+  flex: 1 1 auto;
+  /* Adjusts the width of the child elements */
+  min-width: 200px;
+  /* Set a minimum width for each bin component */
 }
 
 /*# sourceMappingURL=binlevel.css.map */

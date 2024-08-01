@@ -43,7 +43,13 @@
   display: flex;
 }
 
-.chartcontainer .linechart-container {
+.chartcontainer .upper-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.chartcontainer .upper-container .linechart-container {
   height: 42rem;
   box-shadow: 1px 0px 4px var(--grayText);
   overflow: hidden;
@@ -56,15 +62,23 @@
   border-radius: 1rem;
 }
 
-.chartcontainer .linechart-container .linechart {
+.chartcontainer .upper-container .linechart-container .linechart {
   width: 100vh;
   max-width: 100vw;
   display: flex;
 }
 
-.chartcontainer .linechart-container .title1 {
+.chartcontainer .upper-container .linechart-container .title1 {
   padding: 0;
   margin-bottom: 0rem;
+}
+
+.chartcontainer .upper-container .realtime-card {
+  margin-left: 2rem;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
 }
 
 .chartcontainer h3 {

@@ -1,29 +1,76 @@
-.binlevel {
-    .maincontainer{
-        position: fixed;
-        height: 100vh;
-        width: 100vw;
-        overflow: hidden;
-        display: flex;
-        background-color:hsl(0, 0%, 18%);
-        
-    
+.maincontainer{
+    height: 100vh;
+    width: 100vw;
     background: hsl(0, 0%, 91%);
     overflow: hidden;
     box-shadow: 2px 2px 8px var(--grayText);
     display: flex;
-        margin: auto;
+    margin: auto;
     padding: 1rem;
     max-width: 100vw;
-    background-color:hsl(0, 0%, 18%);
-
+    background-color:hsl(0, 0%, 18%); 
+    
+    .navbar {
+        margin-left: 20rem; /* Offset by sidebar width */
+        padding: 1rem;
     }
 
-    .alert {
-        align-items: center;
-        padding-left: 20rem;
-        padding-top: 3rem;
+    .binlevel-body {
+        flex: 1;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 100vh;
+
+        .alert {
+            width: 100%;
+            padding-left: 20px;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+    
+        .realtime-data {
+            // overflow: hidden;
+            // margin-left: 2rem;
+            // padding: 1rem;
+            // width: 30rem;
+            // max-width: 30rem;  
+            // flex-direction: column; 
+            // align-items: center;
+            // position: absolute; 
+
+
+            width: 100%; 
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            margin-top: auto;
+
+          
+    
+            .MuiBox-root {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem; /* Add space between cards */
+            }
     }
+
+    .realtime-bin{
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        gap: 10px; 
+
+        .realtime-bin > div {
+            flex: 1 1 auto; /* Adjusts the width of the child elements */
+            min-width: 200px; /* Set a minimum width for each bin component */
+        }
+    }
+    }
+
+    
 }
 
  

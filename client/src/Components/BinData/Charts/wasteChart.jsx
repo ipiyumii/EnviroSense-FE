@@ -2,14 +2,17 @@ import React, { useEffect, useState } from 'react';
 import SideBar from '../../Dashboard/SideBar Section/SideBar';
 import './wasteCharts.scss';
 import NavBar from '../../NavBar/navbar';
-import WasteLineChart from './wastelinechart';
+import WasteLineChart from './ChartComponents/wastelinechart';
 import axios from 'axios';
-import DonutChartComponent from './donutchart';
-import BinTable from './BinTable/bintable';
+import DonutChartComponent from './ChartComponents/donutchart';
+import BinLevels from './ChartComponents/binlevels';
+
+const colors = ['#333','#8884d8', '#ffc658' , '#82ca9d','#1976d2',  '#ff7300', '#d0ed57', '#a4de6c', '#c5a4d6'];
 
 const WasteChart = () => {
     const [bins, setBins] = useState([]);
     const [selectedBin, setSelectedBin] = useState('');
+    const [binData, setBinData] = useState([]);
 
     useEffect(() => {
         const fetchBins = async () => {
@@ -30,6 +33,19 @@ const WasteChart = () => {
         };
 
         fetchBins();
+
+        const fetchBinData = async () => {
+            try {
+                const response = await axios.get('http://localhost:5000/realtime-data');
+                setBinData(response.data);
+                console.log('Fetched data:', response.data); 
+            } catch (error) {
+                console.error("Error fetching bin data", error);
+            }
+        };
+        fetchBinData();
+        const interval = setInterval(fetchBinData, 5000);
+        return () => clearInterval(interval); 
     }, []);
 
     const handleBinChange = (event) => {
@@ -44,12 +60,24 @@ const WasteChart = () => {
             <NavBar/>
            </div>
     
-           <div className="linechart-container">
-        <h3 className='title1'>Monthly Fill Frequency</h3>
-        <div className="linechart">
-            <WasteLineChart />
-        </div>
-        </div>
+           <div className="upper-container">
+                <div className="linechart-container">
+                    <h3 className='title1'>Monthly Fill Frequency</h3>
+                        <div className="linechart">
+                            <WasteLineChart />
+                        </div>
+                </div>
+               
+                <div className="realtime-card">
+                {binData.map((bin, index) => (
+                    <BinLevels
+                    key={bin.bin_no}
+                    bin={bin}
+                    color={colors[index % colors.length]} 
+                    />
+                ))}
+                </div>
+            </div>
 
              <div className='donut'>
              <h3>Weekly Fill Frequency</h3>

@@ -7,7 +7,7 @@ import { FaChartLine } from "react-icons/fa";
 import { FaPowerOff } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
-
+import RealtimeBins from '../../BinData/BinLevels/RealtimeBins/realtimebins';
 
 const SideBar = () =>{
       const handleLogout = async () => {
@@ -118,6 +118,8 @@ const SideBar = () =>{
                               </span>
                               </a>
                               </li>
+
+                              
                         </ul>
             </div>
       </div>

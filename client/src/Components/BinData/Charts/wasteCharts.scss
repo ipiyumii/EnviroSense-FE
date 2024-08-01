@@ -48,29 +48,45 @@
 
    }
 
-   .linechart-container{
-    height: 42rem;
-    box-shadow: 1px 0px 4px var(--grayText);
-    overflow: hidden;
-    margin-left: 2rem;
-    margin-top: 5rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    border-radius: 1rem;
+   .upper-container {
+        display: flex; 
+        justify-content: space-between; 
+        align-items: flex-start; 
     
-        .linechart {
-            width: 100vh;
-            max-width: 100vw;
+        .linechart-container{
+            height: 42rem;
+            box-shadow: 1px 0px 4px var(--grayText);
+            overflow: hidden;
+            margin-left: 2rem;
+            margin-top: 5rem;
+            padding: 1rem;
             display: flex;
-        }
+            flex-direction: column; 
+            align-items: center;
+            border-radius: 1rem;
+        
+            .linechart {
+                width: 100vh;
+                max-width: 100vw;
+                display: flex;
+            }
+    
+            .title1 {
+                padding: 0;
+                margin-bottom: 0rem;
+            }
+       }
 
-        .title1 {
-            padding: 0;
-            margin-bottom: 0rem;
-        }
+       .realtime-card {
+        margin-left: 2rem; 
+        margin-top: 5rem; 
+        display: flex;
+        flex-direction: column; 
+        max-width: 30%; 
+    }
    }
+
+  
 
   h3 {
     color: var(  --grayText);
