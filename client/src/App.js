@@ -5,7 +5,6 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Register from './Components/Register/Register';
 import Editprofile from './Components/User Profile/Edit Profile/Editprofile';
 import './App.scss'; 
-import BinCard from './Components/BinData/BinCard/bincard';
 import Times from './Components/BinData/Predictions/Times/times';
 import BinLevel from './Components/BinData/BinLevels/billevel';
 import BinAlert from './Components/Alert/binAlert';
@@ -36,10 +35,6 @@ const router = createBrowserRouter([
   {
     path: '/times',
     element: <div> <Times/> </div>
-  },
-  {
-    path: '/bincard',
-    element: <div> <BinCard/> </div>
   },
   {
     path: '/wastechart',

@@ -13,7 +13,6 @@
 
 .maincontainer .navbar {
   margin-left: 20rem;
-  /* Offset by sidebar width */
   padding: 1rem;
 }
 
@@ -47,21 +46,20 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  /* Add space between cards */
 }
 
 .maincontainer .binlevel-body .realtime-bin {
   display: flex;
   flex-wrap: wrap;
-  /* Allow wrapping if needed */
-  gap: 10px;
+  gap: 5px;
+  margin-left: 20%;
+  padding: 10px;
 }
 
 .maincontainer .binlevel-body .realtime-bin .realtime-bin > div {
   flex: 1 1 auto;
-  /* Adjusts the width of the child elements */
   min-width: 200px;
-  /* Set a minimum width for each bin component */
+  max-width: 320px;
 }
 
 /*# sourceMappingURL=binlevel.css.map */

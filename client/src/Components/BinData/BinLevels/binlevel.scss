@@ -11,7 +11,7 @@
     background-color:hsl(0, 0%, 18%); 
     
     .navbar {
-        margin-left: 20rem; /* Offset by sidebar width */
+        margin-left: 20rem; 
         padding: 1rem;
     }
 
@@ -54,18 +54,21 @@
                 justify-content: center;
                 align-items: center;
                 flex-wrap: wrap;
-                gap: 1rem; /* Add space between cards */
+                gap: 1rem; 
             }
     }
 
     .realtime-bin{
         display: flex;
-        flex-wrap: wrap; /* Allow wrapping if needed */
-        gap: 10px; 
+        flex-wrap: wrap; 
+        gap: 5px; 
+        margin-left: 20%;
+        padding: 10px;
 
         .realtime-bin > div {
-            flex: 1 1 auto; /* Adjusts the width of the child elements */
-            min-width: 200px; /* Set a minimum width for each bin component */
+            flex: 1 1 auto; 
+            min-width: 200px; 
+            max-width: 320px;
         }
     }
     }

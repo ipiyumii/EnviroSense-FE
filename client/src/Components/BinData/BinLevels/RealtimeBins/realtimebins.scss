@@ -1,15 +1,25 @@
 .bins {
   position: relative;
-  width: 320px;
-  height: 480px;
-  margin: 20px auto;
+  width: 300;
+  height: 380px;
+  margin: 15px;
+  align-items: center;
+  justify-content: center;
 }
 
 .range__wrapper {
   position: relative;
-  width: 320px;
-  height: 480px;
+  width: 300px;
+  height: 380px;
   margin: 20px auto;
+
+  border: 1px solid hsla(120, 60%, 40%, 1);
+  border-top: none; 
+  border-radius: 4px;
+  padding: 10px;
+  background-color: hsla(0, 0%, 18%, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .range__input {
@@ -17,6 +27,39 @@
   width: 100%;
   height: 100%;
   opacity: 0;
+
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.range__input::-webkit-slider-runnable-track {
+  height: 8px;
+  background: hsla(120, 60%, 40%, 0.2);
+  border-radius: 4px;
+}
+
+.range__input::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+  background: hsla(120, 60%, 40%, 1);
+  border-radius: 50%;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.range__input::-moz-range-track {
+  height: 8px;
+  background: hsla(120, 60%, 40%, 0.2);
+  border-radius: 4px;
+}
+
+.range__input::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: hsla(120, 60%, 40%, 1);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .range__slider {
@@ -27,26 +70,89 @@
 
 .range__value {
   position: absolute;
-  font-size: 24px;
-  color: #fff;
+  // font-size: 24px;
+  // color: #fff;
+
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+
+  color: hsla(120, 60%, 40%, 1);
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .range__value--top {
   top: 10px;
   right: 10px;
+
+
 }
 
 .range__value--bottom {
   bottom: 10px;
   right: 10px;
+  color: white;
+
 }
 
-/* Ensure bin-info is placed outside and below the range__wrapper */
 .bin-info {
-  margin-top: 10px; /* Space between the SVG and bin-info */
-  background-color: #fff; /* Background color for readability */
-  color: #000; /* Text color */
+  margin-top: 10px; 
+  background-color: #fff; 
+  color: #000; 
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Optional for styling */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
 }
+
+// @keyframes elasticFill {
+//   0% {
+//     height: 0;
+//     y: 480;
+//   }
+//   60% {
+//     height: calc(480px * 1.2);
+//     y: calc(480px - 480px * 1.2);
+//   }
+//   100% {
+//     height: calc(480px * var(--fill-percentage));
+//     y: calc(480px - 480px * var(--fill-percentage));
+//   }
+// }
+
+// .bin-svg .bin-fill {
+//   animation: elasticFill 1s ease-out;
+//   transform-origin: bottom;
+// }
+
+// .bin-svg .bin-fill {
+//   transition: height 0.5s ease, y 0.5s ease;
+// }
+
+// .bin-svg {
+//   position: relative;
+// }
+
+// .bin-fill {
+//   transition: height 1s ease-out, y 1s ease-out;
+// }
+
+// .bin-svg line {
+//   stroke: hsla(0, 0%, 80%, 0.7); 
+//   stroke-width: 3; 
+//   stroke-dasharray: 4, 2; 
+// }
+
+.bin-svg {
+  width: 100%; 
+  height: auto; 
+  display: block; 
+  border-top: none;
+}
+
+
+
+
+
+

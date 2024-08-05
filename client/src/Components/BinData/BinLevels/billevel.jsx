@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Box } from '@mui/material';
 import axios from 'axios';
 import SideBar from "../../Dashboard/SideBar Section/SideBar";
 import './binlevel.scss';
 import BinAlert from "../../Alert/binAlert";
 import NavBar from "../../NavBar/navbar";
-import BinLevels from '../Charts/ChartComponents/binlevels';
 import RealtimeBins from './RealtimeBins/realtimebins';
 
 const BinLevel = () => {
