@@ -30,15 +30,24 @@
     padding: 1rem;
 }
 
-.title {
-    margin-bottom: 10px;
-    color: white;
-    // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    font-size: var( --h1fontSize);
-}
+// .title {
+//     margin-bottom: 10px;
+//     color: white;
+//     // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+//     font-size: var( --h1fontSize);
+// }
    
 
     .accordion-container {
+        .title {
+            display: flex;
+            align-items: center; /* Vertically center the items */
+            justify-content: space-between; /* Add space between the elements */
+            margin-bottom: 10px;
+            color: white;
+            // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-size: var( --h1fontSize);
+        }
         .accordion-cont {
             margin-top: 2.5rem;
             width: 50%;
@@ -99,10 +108,7 @@
                 color: inherit; 
             }
 
-            .title {
-                color: hsl(42, 100%, 70%);
-                margin-bottom: 1rem;
-            }
+           
         }
     } 
 
@@ -117,7 +123,28 @@
     }
 
     .collector-tablediv {
-        
+        margin-top: 2rem;
+        .title {
+            width: 10vh;
+            display: flex;
+            align-items: center; /* Vertically center the items */
+            justify-content: flex-start; /* Add space between the elements */
+            margin-bottom: 10px;
+            color: white;
+            // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            font-size: var( --h1fontSize);
+
+            h3 {
+                margin: 0; /* Remove default margin */
+                margin-right: 8px; /* Adjust the space between the h3 and IconButton */
+                white-space: nowrap; 
+                
+            }
+
+            .MuiIconButton-root {
+                padding: 0; /* Remove extra padding around the button */
+                margin: 0;            }
+        }
     }
 }
 

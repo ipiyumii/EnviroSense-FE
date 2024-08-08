@@ -25,6 +25,7 @@ const formatTime = (timeStr) => {
 const Times = () =>  {
     const [bins, setBins] = useState([]);
     const [open, setOpen] = useState(false);
+    const [collectorsUpdated, setCollectorsUpdated] = useState(false);
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const Times = () =>  {
   const handleOpen = () => setOpen(true);
     const handleClose = () => {
         setOpen(false);
-        reset(); // Reset form fields when closing the modal
+        reset(); 
     };
 
     const onSubmit = async (data) => {
@@ -72,16 +73,16 @@ const Times = () =>  {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token if needed
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`, 
                 },
                 body: JSON.stringify(data),
             });
             if (response.ok) {
+                
                 console.log("Collector added successfully");
-                // Optionally, you might want to update the collectors list or show a success message here
+                setCollectorsUpdated(true);
             } else {
                 console.error('Error adding collector:', response.statusText);
-                // Optionally, show an error message to the user
             }
         } catch (error) {
             console.error('Error submitting form:', error);
@@ -105,7 +106,7 @@ const Times = () =>  {
                      </div>
                 <div className="accordion-container">
                 <div className="title">
-                    <h3>Bin Fill Forecast: When’s Your Trash Going to Overflow?</h3>
+                    <h3>When’s Your Trash Going to Overflow?</h3>
                 </div>
                 <div className="accordion-cont">
                     {bins.map((bin, index) => (
@@ -148,7 +149,8 @@ const Times = () =>  {
                         </IconButton>
                     </div>
                     <div className="collector-table">
-                        <CollectorTable/>
+                        {/* <CollectorTable/> */}
+                        <CollectorTable collectorsUpdated={collectorsUpdated} onCollectorsUpdated={() => setCollectorsUpdated(false)} />
                     </div>
                 </div>
 
@@ -177,13 +179,13 @@ const Times = () =>  {
                                 fullWidth
                                 {...register('email', { required: true })}
                             />
-                            <TextField
+                            {/* <TextField
                                 margin="dense"
                                 label="Avatar URL"
                                 type="text"
                                 fullWidth
                                 {...register('avatarUrl')}
-                            />
+                            /> */}
                             <Button type="submit" color="primary" variant="contained">
                                 Add Collector
                             </Button>
