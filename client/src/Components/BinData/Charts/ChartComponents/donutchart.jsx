@@ -13,9 +13,7 @@ const DonutChartComponent = ({ binNo }) => {
                     params: { bin_no: binNo }
                 });
                 const result = response.data;
-                console.log('Fetched Data:', result);
                 const formattedData = processWeeklyData(result);
-                console.log('Formatted Data:', formattedData);
                 setData(formattedData);
             } catch (error) {
                 console.error('Error fetching data:', error);

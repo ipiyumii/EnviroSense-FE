@@ -1,0 +1,86 @@
+.bintable-content {
+  color: var(--whiteColor);
+  padding: 20px;
+  border: none;
+}
+
+.bintable-content table {
+  width: 100%;
+  height: auto;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.bintable-content table thead th {
+  background-color: #333;
+  color: var(--whiteColor);
+  padding: 16px;
+  text-align: left;
+  border-bottom: 2px solid #444;
+  font-weight: bold;
+}
+
+.bintable-content table thead th:nth-child(1) {
+  width: 20%;
+}
+
+.bintable-content table thead th:nth-child(2) {
+  width: 25%;
+}
+
+.bintable-content table thead th:nth-child(3) {
+  width: 30%;
+}
+
+.bintable-content table thead th:nth-child(4) {
+  width: 15%;
+}
+
+.bintable-content table thead th:nth-child(5) {
+  width: 20%;
+}
+
+.bintable-content table tbody tr:nth-child(odd) {
+  background-color: #2a2a2a;
+}
+
+.bintable-content table tbody tr:nth-child(even) {
+  background-color: #1e1e1e;
+}
+
+.bintable-content table tbody td {
+  padding: 16px;
+  border-bottom: 1px solid #444;
+  color: var(--whiteColor);
+}
+
+.bintable-content table tbody td input {
+  background-color: #333;
+  color: var(--whiteColor);
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.bintable-content table tbody td button {
+  background-color: var(--primaryColor);
+  color: var(--whiteColor);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.bintable-content table tbody td button:hover {
+  background-color: var(--hoverColor);
+}
+
+.bintable-content table tbody td button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/*# sourceMappingURL=bintable.css.map */

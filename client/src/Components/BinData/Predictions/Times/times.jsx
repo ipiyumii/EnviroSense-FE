@@ -42,8 +42,6 @@ const Times = () =>  {
 
                 if(response.ok) {
                     const binData = await response.json();
-                    console.log("Predicted times: ",binData);
-
                     setBins(binData);
 
 
@@ -78,8 +76,6 @@ const Times = () =>  {
                 body: JSON.stringify(data),
             });
             if (response.ok) {
-                
-                console.log("Collector added successfully");
                 setCollectorsUpdated(true);
             } else {
                 console.error('Error adding collector:', response.statusText);

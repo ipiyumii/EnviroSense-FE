@@ -42,7 +42,6 @@ const Editprofile = () => {
               // const data = response.data;
               if (response.ok) {
                   const data = await response.json();
-                  console.log('Received user data:', data);
                   setUser(data);
 
                   if (data.file_path) {
@@ -73,7 +72,6 @@ const Editprofile = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                console.log('User data saved successfully');
                 setMessage('data saved successfully');
                 setErrorMessage('');
                 setIsEditable(false);

@@ -6,6 +6,7 @@ import WasteLineChart from './ChartComponents/wastelinechart';
 import axios from 'axios';
 import DonutChartComponent from './ChartComponents/donutchart';
 import BinLevels from './ChartComponents/binlevels';
+import BinTable from './BinTable/bintable';
 
 const colors = ['#333','#8884d8', '#ffc658' , '#82ca9d','#1976d2',  '#ff7300', '#d0ed57', '#a4de6c', '#c5a4d6'];
 
@@ -38,7 +39,6 @@ const WasteChart = () => {
             try {
                 const response = await axios.get('http://localhost:5000/realtime-data');
                 setBinData(response.data);
-                console.log('Fetched data:', response.data); 
             } catch (error) {
                 console.error("Error fetching bin data", error);
             }
@@ -59,7 +59,8 @@ const WasteChart = () => {
             <div className="navbar">
             <NavBar/>
            </div>
-    
+
+           <div className="content">
            <div className="upper-container">
                 <div className="linechart-container">
                     <h3 className='title1'>Monthly Fill Frequency</h3>
@@ -69,18 +70,24 @@ const WasteChart = () => {
                 </div>
                
                 <div className="realtime-card">
-                {binData.map((bin, index) => (
-                    <BinLevels
-                    key={bin.bin_no}
-                    bin={bin}
-                    color={colors[index % colors.length]} 
-                    />
-                ))}
+                    {binData.map((bin, index) => (
+                        <BinLevels
+                        key={bin.bin_no}
+                        bin={bin}
+                        color={colors[index % colors.length]} 
+                        />
+                    ))}
                 </div>
             </div>
 
-             <div className='donut'>
-             <h3>Weekly Fill Frequency</h3>
+            <div className="lower-container">
+                <div className="bin-table">
+                    {/* <BinTable /> */}
+                    <BinTable binData={binData} />
+                </div>
+
+                <div className='donut'>
+                    <h3>Weekly Fill Frequency</h3>
                     <div className="bin-selector">
                         <label htmlFor="bin-select" className='drop-down'>Select Bin:</label>
                         <select id="bin-select" value={selectedBin} onChange={handleBinChange}>
@@ -92,13 +99,12 @@ const WasteChart = () => {
                         </select>
                     </div>
                     <div className="donutchart">
-                    <DonutChartComponent binNo={selectedBin} />
-
+                        <DonutChartComponent binNo={selectedBin} />
                     </div>
                 </div>
-            
+            </div>  
+           </div>
 
-                            {/* <BinTable/> */}
         </div>
     );
 };

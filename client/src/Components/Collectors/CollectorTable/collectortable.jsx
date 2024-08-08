@@ -37,8 +37,6 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
 
                 if(response.ok) {
                     const data = await response.json();
-                    console.log("Trash collectors: ",data);
-
                     setCollectors(data);
                 }
                 else  {
@@ -71,7 +69,6 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
             });
 
             if (response.ok) {
-                console.log("Delete collector with email:", email);
                 setCollectors(prevCollectors => prevCollectors.filter(collector => collector.email !== email));
             } else {
                 console.error("Failed to delete collector");
@@ -100,7 +97,6 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
             });
 
             if(response.ok) {
-                console.log('Updated collector:', selectedCollector);
                 fetchCollectors(); 
                 setEditModalOpen(false);
             } else {

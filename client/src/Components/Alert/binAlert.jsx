@@ -16,7 +16,6 @@ const BinAlert = () => {
                 });
                 if(response.ok) {
                     const data = await response.json();
-                    console.log("Predicted decisions: ",data);
                     setDecision(data.decisions);
                 }
                 else  {

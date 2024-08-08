@@ -22,7 +22,6 @@ const NavBar = () => {
                 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log('Received user data:', data);
 
                     if (data.file_path) {
                         setProfilePicturePreview(`http://localhost:5000/${data.file_path}`);

@@ -27,7 +27,6 @@ const Notification = () => {
                 });
                 if(response.ok) {
                     const data = await response.json();
-                    console.log("Predicted decisions: ",data);
 
                     let newDecisions = [];
 
@@ -53,8 +52,8 @@ const Notification = () => {
                     combinedDecisions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                     
                     setDecisions(combinedDecisions);
+                    
                     localStorage.setItem('notifications', JSON.stringify(combinedDecisions));
-
                     localStorage.setItem('lastFetchTime', new Date().toISOString());
 
                 }

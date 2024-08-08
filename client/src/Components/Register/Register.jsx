@@ -3,7 +3,6 @@ import './Register.scss';
 import '../../App.css';
 import video from '../../LoginAssests/video.mp4';
 import logo from '../../LoginAssests/logo.jpeg';
-
 import { Link } from 'react-router-dom';
 
 import { FaUserShield } from 'react-icons/fa';
