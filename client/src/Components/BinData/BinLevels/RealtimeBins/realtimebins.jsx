@@ -65,7 +65,7 @@ const RealtimeBins = ({binData}) => {
             </div>
         </div>
         <div className="bin-info">
-            <p>Bin No: {binData.bin_no}</p>
+            <p>{binData.bin_no}</p>
         </div>
     </div>
 

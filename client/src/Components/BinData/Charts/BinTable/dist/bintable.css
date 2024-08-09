@@ -54,14 +54,49 @@
   color: var(--whiteColor);
 }
 
+.bintable-content table tbody td .delete-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 0%;
+}
+
+.bintable-content table tbody td .delete-icons .MuiIconButton-root {
+  padding: 0;
+  color: #171717;
+  background: transparent;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.bintable-content table tbody td .delete-icons .MuiIconButton-root:hover {
+  background: transparent;
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+}
+
+.bintable-content table tbody td .delete-icons .MuiIconButton-root:focus {
+  outline: none;
+}
+
 .bintable-content table tbody td input {
-  background-color: #333;
   color: var(--whiteColor);
-  border: 1px solid #555;
-  border-radius: 4px;
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.bintable-content table tbody td .italic-input {
+  font-style: italic;
+  color: var(--grayText);
+  text-decoration: underline;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }
 
 .bintable-content table tbody td button {
@@ -81,6 +116,22 @@
 .bintable-content table tbody td button:focus {
   outline: none;
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.bintable-content .add-icon .MuiIconButton-root {
+  padding: 0;
+  color: #94a89b;
+  background: transparent;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.bintable-content .add-icon .MuiIconButton-root:hover {
+  background: transparent;
+  box-shadow: 0 0 8px rgba(57, 197, 113, 0.8);
+}
+
+.bintable-content .add-icon .MuiIconButton-root:focus {
+  outline: none;
 }
 
 /*# sourceMappingURL=bintable.css.map */

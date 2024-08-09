@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './collectortable.scss';
-import { Accordion, AccordionSummary, AccordionDetails, Typography } from '@mui/material';
+import { Accordion, AccordionSummary, AccordionDetails, Typography, Tooltip, IconButton, Modal, TextField, Button } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import image1 from '../avatars/avatar1.webp';
 import image2 from '../avatars/avatar2.webp';
@@ -13,7 +13,6 @@ import image8 from '../avatars/image8.png';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import { IconButton, Modal, TextField, Button } from '@mui/material';
 
 const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
     const [collectors, setCollectors] = useState([]);
@@ -148,12 +147,17 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
                             </Accordion>
                         </div>
                         <div className="action-icons">
+                            <Tooltip title="Edit collector" arrow>
                                 <IconButton onClick={() => handleEdit(collector)}>
                                     <EditIcon />
                                 </IconButton>
+                            </Tooltip>
+                            <Tooltip title="Delete collector" arrow>
                                 <IconButton onClick={() => handleDelete(collector.email)}>
                                     <DeleteIcon />
                                 </IconButton>
+                            </Tooltip>
+
                         </div>
                     </div>
                 ))
@@ -189,9 +193,9 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
                         fullWidth
                         margin="normal"
                     />
-                    <Button variant="contained" color="primary" onClick={handleEditSubmit}>
-                        Save
-                    </Button>
+                        <Button variant="contained" color="primary" onClick={handleEditSubmit}>
+                            Save
+                        </Button>
                     <Button variant="contained" onClick={() => setEditModalOpen(false)}>
                         Cancel
                     </Button>

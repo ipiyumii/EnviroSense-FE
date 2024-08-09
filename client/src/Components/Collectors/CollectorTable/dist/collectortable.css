@@ -83,7 +83,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-  /* Adjust the width as needed */
   background-color: white;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -104,7 +103,6 @@
   margin-top: 15px;
   margin-right: 10px;
   width: calc(50% - 10px);
-  /* Divide space for buttons */
 }
 
 .modal-content .MuiButton-root:last-child {

@@ -101,12 +101,12 @@
                     }
                 }
     
-                &:hover .menuLink{
+                &:hover .menuLink,  &.active .menuLink {
                     color: var(--primaryColor);
                     transition: 0;
                 }
 
-                &:hover::before{
+                &:hover::before,  &.active::before{
                     height: 100%;
                     transition: .3s ease;
                 }

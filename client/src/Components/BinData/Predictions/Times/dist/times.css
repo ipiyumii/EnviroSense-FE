@@ -34,9 +34,7 @@
 .topmain .accordion-container .title {
   display: flex;
   align-items: center;
-  /* Vertically center the items */
   justify-content: space-between;
-  /* Add space between the elements */
   margin-bottom: 10px;
   color: white;
   font-size: var(--h1fontSize);
@@ -111,9 +109,7 @@
   width: 10vh;
   display: flex;
   align-items: center;
-  /* Vertically center the items */
   justify-content: flex-start;
-  /* Add space between the elements */
   margin-bottom: 10px;
   color: white;
   font-size: var(--h1fontSize);
@@ -121,15 +117,12 @@
 
 .topmain .collector-tablediv .title h3 {
   margin: 0;
-  /* Remove default margin */
   margin-right: 8px;
-  /* Adjust the space between the h3 and IconButton */
   white-space: nowrap;
 }
 
 .topmain .collector-tablediv .title .MuiIconButton-root {
   padding: 0;
-  /* Remove extra padding around the button */
   margin: 0;
 }
 

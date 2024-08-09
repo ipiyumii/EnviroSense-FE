@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import CollectorTable from '../../../Collectors/CollectorTable/collectortable';
 // import image2 from './bindataAssests/bin3.webp';
 import { useForm } from 'react-hook-form';
-import { Dialog, DialogTitle, DialogContent, TextField, Button, IconButton } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, TextField, Button, IconButton, Tooltip } from '@mui/material';
 
 
 const formatTime = (timeStr) => {
@@ -27,6 +27,8 @@ const Times = () =>  {
     const [open, setOpen] = useState(false);
     const [collectorsUpdated, setCollectorsUpdated] = useState(false);
     const { register, handleSubmit, reset } = useForm();
+    const [locations, setLocations] = useState({});
+
 
     useEffect(() => {
         const fetchPredictedTimes = async() => {
@@ -53,8 +55,23 @@ const Times = () =>  {
                 console.error('Error fetching user data:', error);
             }
         };
+        const fetchBinsLocation = async () => {
+            const storedData = localStorage.getItem('binsData');
+            if (storedData) {
+                const binsData = JSON.parse(storedData);
+                const locationsMap = binsData.reduce((map, bin) => {
+                    map[bin.bin_no] = bin.location; // Assuming each bin has a bin_no and location
+                    return map;
+                }, {});
+                setLocations(locationsMap);
+            } else {
+                console.error('No bins data found in local storage.');
+            }
+        };
+
 
         fetchPredictedTimes();
+        fetchBinsLocation();
 
   }, []); 
 
@@ -117,6 +134,8 @@ const Times = () =>  {
                                 <AccordionDetails>
                                     {/* <img src={defaultImage} alt={bin.location} className="bin-image" /> */}
                                     {/* <Typography variant="h6">{`Bin Number: ${bin.bin_no}`}</Typography> */}
+                                    <Typography variant="body1" style={{ fontSize: '1rem', fontWeight: '700' }}>Location:</Typography>
+                                    <Typography variant="body2">{locations[bin.bin_no] || 'Location not available'}</Typography>
                                     <Typography variant="body1" style={{ fontSize: '1rem', fontWeight: '700' }}>Predicted Times:</Typography>
                                     <ul>
                                         {bin.predictions.map((time, i) => (
@@ -134,15 +153,18 @@ const Times = () =>  {
                 <div className="collector-tablediv">
                     <div className="title">
                         <h3>Collector List</h3>
-                        <IconButton
-                            color="primary"
-                            aria-label="add"
-                            component="span"
-                            onClick={handleOpen}
-                            style={{ marginLeft: 'auto' }}
-                        >
-                            <AddIcon />
-                        </IconButton>
+                        <Tooltip title="Add a collector" arrow>
+                            <IconButton
+                                color="primary"
+                                aria-label="add"
+                                component="span"
+                                onClick={handleOpen}
+                                style={{ marginLeft: 'auto' }}
+                            >
+                                <AddIcon />
+                            </IconButton>
+                        </Tooltip>
+
                     </div>
                     <div className="collector-table">
                         {/* <CollectorTable/> */}

@@ -96,12 +96,12 @@
   margin-right: .5rem;
 }
 
-.sideBar .menuDiv .menuLists .listItem:hover .menuLink, .sideBar .settingDiv .menuLists .listItem:hover .menuLink {
+.sideBar .menuDiv .menuLists .listItem:hover .menuLink, .sideBar .menuDiv .menuLists .listItem.active .menuLink, .sideBar .settingDiv .menuLists .listItem:hover .menuLink, .sideBar .settingDiv .menuLists .listItem.active .menuLink {
   color: var(--primaryColor);
   transition: 0;
 }
 
-.sideBar .menuDiv .menuLists .listItem:hover::before, .sideBar .settingDiv .menuLists .listItem:hover::before {
+.sideBar .menuDiv .menuLists .listItem:hover::before, .sideBar .menuDiv .menuLists .listItem.active::before, .sideBar .settingDiv .menuLists .listItem:hover::before, .sideBar .settingDiv .menuLists .listItem.active::before {
   height: 100%;
   transition: .3s ease;
 }

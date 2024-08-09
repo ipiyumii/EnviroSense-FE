@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './sidebar.scss';
 import logo from '../../../LoginAssests/logo.jpeg';
 import { IoMdSpeedometer } from "react-icons/io";
@@ -8,8 +9,18 @@ import { FaPowerOff } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa6";
 import { IoMdNotifications } from "react-icons/io";
 import RealtimeBins from '../../BinData/BinLevels/RealtimeBins/realtimebins';
+import { useLocation } from 'react-router-dom';
 
 const SideBar = () =>{
+      const location = useLocation();
+      const [activeItem, setActiveItem] = useState(location.pathname);
+
+
+      const handleClick = (path) => {
+            setActiveItem(path);
+      };
+
+
       const handleLogout = async () => {
             try {
                   const response = await fetch('http://localhost:5000/logout', {
@@ -47,7 +58,10 @@ const SideBar = () =>{
                   </h3>
 
                   <ul className='menuLists grid'>
-                        <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/dashboard' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/dashboard')}
+                        >
                               <a href='/dashboard' className='menuLink flex'>
                               <IoMdSpeedometer className='icon'/>
                               <span className='smallText'>
@@ -56,7 +70,10 @@ const SideBar = () =>{
                               </a>
                         </li>
 
-                        <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/binlevel' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/binlevel')}
+                        >
                               <a href='/binlevel' className='menuLink flex'>
                               <RiDeleteBin3Line className='icon'/>
                               <span className='smallText'>
@@ -65,7 +82,10 @@ const SideBar = () =>{
                               </a>
                         </li>
 
-                        <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/times' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/times')}
+                        >         
                               <a href='/times' className='menuLink flex'>
                               <MdOutlineAccessTime className='icon'/>
                               <span className='smallText'>
@@ -74,7 +94,10 @@ const SideBar = () =>{
                               </a>
                         </li>
 
-                        <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/wastechart' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/wastechart')}
+                        >
                               <a href='/wastechart' className='menuLink flex'>
                               <FaChartLine className='icon'/>
                               <span className='smallText'>
@@ -92,32 +115,41 @@ const SideBar = () =>{
                         </h3>
                   
                         <ul className='menuLists grid'>
-                              <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/editProfile' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/editProfile')}
+                        >                              
                               <a href='/editProfile' className='menuLink flex'>
                               <FaUser className='icon'/>
                               <span className='smallText'>
                                     Account
                               </span>
                               </a>
-                              </li>
+                        </li>
 
-                              <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/notification' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/notification')}
+                        >
                               <a href='notification' className='menuLink flex'>
                               <IoMdNotifications className='icon'/>
                               <span className='smallText'>
                                     Notification
                               </span>
                               </a>
-                              </li>
+                        </li>
 
-                              <li className='listItem'>
+                        <li 
+                        className={`listItem ${activeItem === '/logout' ? 'active' : ''}`} 
+                        onClick={() => handleClick('/logout')}
+                        >
                               <a href='#' className='menuLink flex' onClick={handleLogout}>
                               <FaPowerOff className='icon'/>
                               <span className='smallText'>
                                     Log out
                               </span>
                               </a>
-                              </li>
+                        </li>
 
                               
                         </ul>

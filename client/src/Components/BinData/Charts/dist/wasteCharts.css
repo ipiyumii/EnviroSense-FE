@@ -1,6 +1,7 @@
 .chartcontainer {
   position: relative;
-  height: 150vh;
+  height: 100vh;
+  width: 100vw;
   background: #e8e8e8;
   overflow: hidden;
   box-shadow: 2px 2px 8px var(--grayText);
@@ -11,6 +12,11 @@
   background-color: #2e2e2e;
 }
 
+.chartcontainer .navbar {
+  margin-left: 20rem;
+  padding: 1rem;
+}
+
 .chartcontainer .chart {
   margin-left: 20px;
   width: 15rem;
@@ -19,7 +25,10 @@
 
 .chartcontainer .content {
   flex-direction: column;
-  /* Stack containers vertically */
+  display: flex;
+  flex: 1;
+  margin-left: 3rem;
+  overflow-y: auto;
 }
 
 .chartcontainer .content .upper-container {
@@ -49,10 +58,9 @@
 
 .chartcontainer .content .upper-container .linechart-container .title1 {
   padding: 0;
-  margin-bottom: 1rem;
   color: var(--grayText);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  font-size: var(--h2fontSize);
+  font-size: var(--h1fontSize);
 }
 
 .chartcontainer .content .upper-container .realtime-card {
@@ -75,6 +83,9 @@
   border-radius: 1rem;
   overflow: auto;
   color: var(--whiteColor);
+  margin-left: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
 }
 
 .chartcontainer .content .lower-container .drop-down {
@@ -106,12 +117,14 @@
 .chartcontainer .content .lower-container .donut {
   box-shadow: 2px 2px 8px var(--grayText);
   border-radius: 1rem;
-  position: absolute;
   bottom: 1rem;
   right: 1rem;
   z-index: 1000;
   overflow: hidden;
-  margin-left: 2rem;
+  margin-top: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
   padding: 1rem;
   width: 30rem;
   max-width: 30rem;

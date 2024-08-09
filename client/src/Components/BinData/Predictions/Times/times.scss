@@ -41,8 +41,8 @@
     .accordion-container {
         .title {
             display: flex;
-            align-items: center; /* Vertically center the items */
-            justify-content: space-between; /* Add space between the elements */
+            align-items: center; 
+            justify-content: space-between; 
             margin-bottom: 10px;
             color: white;
             // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
@@ -115,7 +115,7 @@
     .alert {
         width: 900px;
 
-        // width: 100%; // Adjust width if needed
+        // width: 100%;
         border-radius: 8px;
         padding: 1rem;
 
@@ -127,22 +127,22 @@
         .title {
             width: 10vh;
             display: flex;
-            align-items: center; /* Vertically center the items */
-            justify-content: flex-start; /* Add space between the elements */
+            align-items: center;
+            justify-content: flex-start; 
             margin-bottom: 10px;
             color: white;
             // text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
             font-size: var( --h1fontSize);
 
             h3 {
-                margin: 0; /* Remove default margin */
-                margin-right: 8px; /* Adjust the space between the h3 and IconButton */
+                margin: 0;
+                margin-right: 8px; 
                 white-space: nowrap; 
                 
             }
 
             .MuiIconButton-root {
-                padding: 0; /* Remove extra padding around the button */
+                padding: 0; 
                 margin: 0;            }
         }
     }
