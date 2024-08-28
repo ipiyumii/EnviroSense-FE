@@ -18,16 +18,6 @@
   margin-left: 3px;
 }
 
-.navbar .bellicon {
-  width: 3rem;
-  height: 3rem;
-  font-size: 2rem;
-  border-radius: 50%;
-  padding: 5px;
-  position: relative;
-  color: var(--grayText);
-}
-
 .navbar .profile-picture-preview {
   width: 4rem;
   height: 4rem;
@@ -40,6 +30,38 @@
 
 .navbar .usericon, .navbar .profile-picture-preview, .navbar .bellicon {
   cursor: pointer;
+}
+
+.navbar .notification-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar .notification-wrapper .bellicon {
+  width: 3rem;
+  height: 3rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  padding: 5px;
+  position: relative;
+  color: var(--grayText);
+}
+
+.navbar .notification-wrapper .notification-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: red;
+  color: white;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
 }
 
 /*# sourceMappingURL=navbar.css.map */

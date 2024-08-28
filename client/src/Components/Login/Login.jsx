@@ -32,6 +32,7 @@ const Login = () => {
                 // localStorage.setItem('username', username);
                 localStorage.setItem('token', data.access_token);
                 localStorage.setItem('username', data.username);
+
                 window.location.href = '/dashboard';
             }
         }
@@ -51,10 +52,14 @@ const Login = () => {
         })
         .then(response => response.json())
         .then(data => { 
-                // setUsername(data.name);    
-                localStorage.setItem('username', data.username);     
+            if (data.access_token) {  
+                localStorage.setItem('token', data.access_token);  
+                localStorage.setItem('username', data.username);   
                 console.log('Login successful:', data);
-                window.location.href = '/dashboard';  
+                window.location.href = '/dashboard';
+            } else {
+                console.error('Login failed: No access token received');
+            }
         })
         .catch(error => {
             console.error('Login error:', error);

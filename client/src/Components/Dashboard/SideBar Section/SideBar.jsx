@@ -30,8 +30,20 @@ const SideBar = () =>{
                   });
             
                   if (response.ok) {
-                    localStorage.removeItem('username');  
-                  //   setMessage('Logged out successfully');
+                    localStorage.removeItem('username'); 
+                    localStorage.removeItem('token'); 
+                    localStorage.removeItem('google_access_token');
+                    document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/'; 
+
+                  //   document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 GMT'; 
+
+                  if (window.gapi && window.gapi.auth2) {
+                        const auth2 = window.gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(() => {
+                            console.log('Google user signed out');
+                        });
+                    }
+
                     window.location.href = '/';  
                   } else {
                     console.error('Logout failed');

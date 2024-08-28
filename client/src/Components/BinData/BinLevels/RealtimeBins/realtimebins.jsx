@@ -4,12 +4,12 @@ import './realtimebins.scss';
 
 const RealtimeBins = ({binData}) => {
     // const fillPercentage = binData.level / 100;
-
+    const [locations, setLocations] = useState({});
     const fillRectRef = useRef(null);
-    const [prevFillPercentage, setPrevFillPercentage] = useState(binData.level / 100);
+    const [prevFillPercentage, setPrevFillPercentage] = useState(binData.Bin_Level / 100);
 
     useEffect(() => {
-        const fillPercentage = binData.level / 100;
+        const fillPercentage = binData.Bin_Level / 100;
 
         anime({
             targets: fillRectRef.current,
@@ -19,14 +19,30 @@ const RealtimeBins = ({binData}) => {
             duration: 3000, 
         });
 
+        const fetchBinLocation = async() => {
+            const storedData = localStorage.getItem('binsData');
+            if(storedData) {
+                const binsData = JSON.parse(storedData);
+                console.log('Fetched bins data:', binsData); 
+                const locationMap = binsData.reduce((map, bin) => {
+                    map[bin.bin_no] = bin.location; 
+                    return map;
+                }, {});
+                setLocations(locationMap);
+            } else {
+                console.error('No bins data found in local storage.');
+            }
+        };
+
         setPrevFillPercentage(fillPercentage);
-    }, [binData.level]);
+        fetchBinLocation()
+    }, [binData.Bin_Level]);
 
     return (
 
         <div className='bins'>
         <div className="range__wrapper">
-            <input className="range__input" type="range" min="0" max="100" value={binData.level} readOnly />
+            <input className="range__input" type="range" min="0" max="100" value={binData.Bin_Level} readOnly />
             <svg className="bin-svg" width="300px" height="380px" viewBox="0 0 300 380" style={{ border: 'none' }}>
                 
                 <rect x="0" y="0" width="300" height="380" fill="hsla(0, 0%, 18%, 0.7)" stroke="none"  />
@@ -58,14 +74,16 @@ const RealtimeBins = ({binData}) => {
                  
             </svg>
             <div className="range__value range__value--top">
-                <span>{100 - binData.level}</span>
+                <span>{100 - binData.Bin_Level}%</span>
             </div>
             <div className="range__value range__value--bottom">
-                <span>{binData.level}</span>
+                <span>{binData.Bin_Level}%</span>
             </div>
         </div>
         <div className="bin-info">
             <p>{binData.bin_no}</p>
+            <p>{locations[binData.bin_no]}</p>
+            <p></p>
         </div>
     </div>
 

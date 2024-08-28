@@ -85,13 +85,13 @@ const BinLevels = ({bin, color}) => {
                 {bin.bin_no}
               </BinNumber>
               <PercentageText variant="body1">
-                {bin.level}%
+                {bin.Bin_Level}%
               </PercentageText>
             </Grid>
           </Grid>
         </ContentWrapper>
         <TimestampText variant="body2">
-      {new Date(bin.timestamp * 1000).toLocaleString()}
+      {new Date(bin.Timestamp * 1000).toLocaleString()}
         </TimestampText>
       </CardContent>
     </BinCard>

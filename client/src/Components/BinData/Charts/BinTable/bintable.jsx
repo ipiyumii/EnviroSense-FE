@@ -4,6 +4,7 @@ import './bintable.scss';
 import { IconButton, Tooltip } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
+import Swal from 'sweetalert2';
 
 const BinTable = ({binData}) => {
     const [bins,setBins] = useState([]);
@@ -36,24 +37,36 @@ const BinTable = ({binData}) => {
     };
 
     const handleSave = async (bin) => {
-        try {
-            if (bin.bin_no === newBin?.bin_no) {
-                await axios.post('http://localhost:5000/meta/bin/add', bin);
-                setNewBin(null); 
+        const result = await Swal.fire({
+            title: "Do you want to save the changes?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Save",
+            denyButtonText: "Don't save"
+        });
 
-                const response = await axios.get('http://localhost:5000/meta/bin');
-                setBins(response.data);
+        if (result.isConfirmed) {
+            try {
+                if (bin.bin_no === newBin?.bin_no) {
+                    await axios.post('http://localhost:5000/meta/bin/add', bin);
+                    setNewBin(null); 
 
-            } else {
-                await axios.put(`http://localhost:5000/meta/bin/update?bin_no=${bin.bin_no}`, bin);
-                setEditingBinNo(null); 
+                    const response = await axios.get('http://localhost:5000/meta/bin');
+                    setBins(response.data);
 
-                const response = await axios.get('http://localhost:5000/meta/bin');
-                setBins(response.data);
+                } else {
+                    await axios.put(`http://localhost:5000/meta/bin/update?bin_no=${bin.bin_no}`, bin);
+                    setEditingBinNo(null); 
+
+                    const response = await axios.get('http://localhost:5000/meta/bin');
+                    setBins(response.data);
+                }
+            
+            } catch (error) {
+                console.error('Error saving bin:', error);
             }
-           
-        } catch (error) {
-            console.error('Error saving bin:', error);
+        } else if (result.isDenied) {
+            Swal.fire("Changes are not saved", "", "info");
         }
     };
 
@@ -75,13 +88,37 @@ const BinTable = ({binData}) => {
     };
 
     const handleDelete = async (bin_no) => {
-        try {
-            await axios.delete(`http://localhost:5000/meta/bin/delete?bin_no=${bin_no}`);
-            setBins(bins.filter(bin => bin.bin_no !== bin_no));
-        } catch (error) {
-            console.error('Error deleting bin:', error);
-        }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    await axios.delete(`http://localhost:5000/meta/bin/delete?bin_no=${bin_no}`);
+                    setBins(bins.filter(bin => bin.bin_no !== bin_no));
+                    
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your bin has been deleted.",
+                        icon: "success"
+                    });
+                } catch (error) {
+                    console.error('Error deleting bin:', error);
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an issue deleting the bin.",
+                        icon: "error"
+                    });
+                }
+            }
+        });
     };
+    
 
     const handleAdd = () => {
         setNewBin({ bin_no: '', bin_name: '', location: '', level: 0 }); 
@@ -134,7 +171,16 @@ const BinTable = ({binData}) => {
                                     className={editingBinNo === bin.bin_no ? 'italic-input' : ''}
                                 />
                             </td>
-                            <td>{bin.level >= 85 ? "Full" : bin.level >= 50 ? "Half Full" : "Not Full"}</td>
+                            {/* <td>{bin.Bin_Level >= 85 ? "Full" : bin.Bin_Level >= 50 ? "Half Full" : "Not Full"}</td> */}
+                            <td>
+                                {bin.Bin_Level >= 95
+                                    ? "Full"
+                                    : bin.Bin_Level >= 85
+                                    ? "Almost Full"
+                                    : bin.Bin_Level >= 50
+                                    ? "Half Full"
+                                    : "Not Full"}
+                                </td>
                             <td>
                                 <button onClick={() => handleEdit(bin.bin_no)}>Edit</button>
                             </td>
@@ -169,7 +215,7 @@ const BinTable = ({binData}) => {
                                     placeholder="Location"
                                 />
                             </td>
-                            <td>{newBin.level >= 85 ? "Full" : newBin.level >= 50 ? "Half Full" : "Not Full"}</td>
+                            <td>{newBin.Bin_Level >= 85 ? "Full" : newBin.Bin_Level >= 50 ? "Half Full" : "Not Full"}</td>
                             <td>
                                 <button onClick={() => handleSave(newBin)}>Save</button>
                             </td>

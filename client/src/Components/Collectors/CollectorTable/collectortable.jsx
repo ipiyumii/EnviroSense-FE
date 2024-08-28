@@ -10,6 +10,7 @@ import image5 from '../avatars/image8.webp';
 import image7 from '../avatars/image7.webp';
 import image8 from '../avatars/image8.png';
 // import image3 from '../avatars/image10.png'
+import Swal from 'sweetalert2';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -62,19 +63,42 @@ const CollectorTable = ({ collectorsUpdated, onCollectorsUpdated }) => {
     }, [collectorsUpdated, onCollectorsUpdated]);
 
     const handleDelete = async(email) => {
-        try {
-            const response = await fetch(`http://localhost:5000/collector/delete?email=${email}`, {
-                method: 'DELETE',
-            });
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                try {
+                    const response = await fetch(`http://localhost:5000/collector/delete?email=${email}`, {
+                        method: 'DELETE',
+                    });
 
-            if (response.ok) {
-                setCollectors(prevCollectors => prevCollectors.filter(collector => collector.email !== email));
-            } else {
-                console.error("Failed to delete collector");
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your bin has been deleted.",
+                        icon: "success"
+                    });
+        
+                    if (response.ok) {
+                        setCollectors(prevCollectors => prevCollectors.filter(collector => collector.email !== email));
+                    } else {
+                        console.error("Failed to delete collector");
+                    }
+                } catch (error) {
+                    console.error("Error deleting collector:", error);
+                    Swal.fire({
+                        title: "Error!",
+                        text: "There was an issue deleting the bin.",
+                        icon: "error"
+                    });
+                }
             }
-        } catch (error) {
-            console.error("Error deleting collector:", error);
-        }
+        })
     };
 
     const handleEdit = (collector) => {

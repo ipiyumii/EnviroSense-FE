@@ -60,7 +60,7 @@ const Times = () =>  {
             if (storedData) {
                 const binsData = JSON.parse(storedData);
                 const locationsMap = binsData.reduce((map, bin) => {
-                    map[bin.bin_no] = bin.location; // Assuming each bin has a bin_no and location
+                    map[bin.bin_no] = bin.location; 
                     return map;
                 }, {});
                 setLocations(locationsMap);

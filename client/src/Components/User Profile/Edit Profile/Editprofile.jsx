@@ -10,6 +10,7 @@ import { FaEyeSlash } from "react-icons/fa";
 import { FaEye } from "react-icons/fa"; 
 import NavBar from '../../NavBar/navbar';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Editprofile = () => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -29,7 +30,8 @@ const Editprofile = () => {
 
     useEffect(() => {
       const fetchUserData = async () => {
-        const token = localStorage.getItem('token');  
+        const token = localStorage.getItem('token'); 
+
         try {
               const response = await fetch('http://localhost:5000/user', {
                   method: 'GET',
@@ -42,10 +44,22 @@ const Editprofile = () => {
               // const data = response.data;
               if (response.ok) {
                   const data = await response.json();
+                  console.log('User data received from backend:', data);
                   setUser(data);
 
-                  if (data.file_path) {
-                    setProfilePicturePreview(`http://localhost:5000/${data.file_path}`);
+                  if (data.name) {
+                    localStorage.setItem('name', data.name);
+                    console.log('Saving name to localStorage:', data.name);
+                }
+
+                  if(data.file_path) {
+                    if (data.file_path.startsWith('https://lh3.googleusercontent.com/')) {
+                      setProfilePicturePreview(data.file_path);
+                      console.log('file path',data.file_path);
+                    }
+                  } else {
+                    setProfilePicturePreview(`http://localhost:5000${data.file_path}`);
+
                   }
               } else {
                 console.error('Error fetching user data:', response.statusText);
@@ -59,8 +73,19 @@ const Editprofile = () => {
 
     const handleSaveClick = async (e) => {
       e.preventDefault();
+
+      const result = await Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: "Don't save"
+    });
+
+      if (result.isConfirmed) {
         try {
             const token = localStorage.getItem('token');
+           
             const response = await fetch('http://localhost:5000/updateuser', {
                 method: 'POST',
                 headers: {
@@ -93,6 +118,9 @@ const Editprofile = () => {
             setMessage('Error saving user data');
             // setIsEditable(true);
         }
+      } else if (result.isDenied) {
+        Swal.fire("Changes are not saved", "", "info");
+    }
       // setIsEditable(!isEditable);
   };
 
@@ -262,6 +290,7 @@ const Editprofile = () => {
                       readOnly={!isEditable}
                       onChange={handleChange}
                       className={isEditable ? 'editable' : ''}
+                      placeholder='Enter your name'
                     />
                 </div>
                 <div className='form-group'>
@@ -274,6 +303,7 @@ const Editprofile = () => {
                       readOnly={!isEditable}
                       onChange={handleChange}
                       className={isEditable ? 'editable' : ''}
+                      placeholder='update your username'
                     />
                     {/* <p>username has already taken!</p> */}
                     {errorMessage && <p className='error-msg'>{errorMessage}</p>}
@@ -288,6 +318,7 @@ const Editprofile = () => {
                     readOnly={!isEditable}
                     onChange={handleChange}
                     className={isEditable ? 'editable' : ''}
+                    placeholder='Enter your email'
                 />
                 </div>
                 <div className='form-group'>
@@ -300,6 +331,7 @@ const Editprofile = () => {
                     readOnly={!isEditable}
                     onChange={handleChange}
                     className={isEditable ? 'editable' : ''}
+                    placeholder='Enter your phone number'
                   />
                   {message && <p className='success-msg'>{message}</p>}
                 </div>

@@ -18,18 +18,6 @@
         color: var( --grayText);
         margin-left: 3px;
       }
-      .bellicon {
-        width: 3rem;
-        height: 3rem;
-        font-size: 2rem;
-        border-radius: 50%;
-        padding: 5px;
-        position: relative; 
-        // top: -30px; 
-        // right: -27px;
-        color: var(--grayText);
-      }
-
       .profile-picture-preview {
         width: 4rem;
         height: 4rem;
@@ -45,6 +33,42 @@
       .usericon,  .profile-picture-preview,.bellicon{
         cursor: pointer;
       }
+
+      .notification-wrapper{
+        position: relative;
+        display: inline-block;
+    
+        .bellicon {
+          width: 3rem;
+          height: 3rem;
+          font-size: 2rem;
+          border-radius: 50%;
+          padding: 5px;
+          position: relative; 
+          // top: -30px; 
+          // right: -27px;
+          color: var(--grayText);
+        }
+
+        .notification-count {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          background: red;
+          color: white;
+          border-radius: 50%;
+          padding: 0.2rem 0.5rem;
+          font-size: 0.75rem;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 20px;
+          height: 20px;
+      }
+      }
+     
+
 }
 
 

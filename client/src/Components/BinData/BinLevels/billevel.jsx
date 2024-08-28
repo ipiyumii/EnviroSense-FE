@@ -13,7 +13,8 @@ const BinLevel = () => {
         const fetchBinData = async () => {
             try {
                 const response = await axios.get('http://localhost:5000/realtime-data');
-                setBinData(response.data);
+                // setBinData(response.data);
+                setBinData(Object.values(response.data));
                 console.log('Fetched data:', response.data); 
             } catch (error) {
                 console.error("Error fetching bin data", error);

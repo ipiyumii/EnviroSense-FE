@@ -5,7 +5,7 @@ import NavBar from '../../NavBar/navbar';
 import WasteLineChart from './ChartComponents/wastelinechart';
 import axios from 'axios';
 import DonutChartComponent from './ChartComponents/donutchart';
-import BinLevels from './ChartComponents/binlevels';
+import BinCard from './ChartComponents/bincard';
 import BinTable from './BinTable/bintable';
 
 const colors = ['#333','#8884d8', '#ffc658' , '#82ca9d','#1976d2',  '#ff7300', '#d0ed57', '#a4de6c', '#c5a4d6'];
@@ -39,12 +39,13 @@ const WasteChart = () => {
             try {
                 const response = await axios.get('http://localhost:5000/realtime-data');
                 setBinData(response.data);
+                console.log('Fetched bin data:', response.data);
             } catch (error) {
-                console.error("Error fetching bin data", error);
+                console.error("Error fetching real time data", error);
             }
         };
         fetchBinData();
-        const interval = setInterval(fetchBinData, 5000);
+        const interval = setInterval(fetchBinData, 120000);
         return () => clearInterval(interval); 
     }, []);
 
@@ -71,7 +72,7 @@ const WasteChart = () => {
                
                 <div className="realtime-card">
                     {binData.map((bin, index) => (
-                        <BinLevels
+                        <BinCard
                         key={bin.bin_no}
                         bin={bin}
                         color={colors[index % colors.length]} 

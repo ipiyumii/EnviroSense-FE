@@ -11,15 +11,19 @@ import NavBar from '../../../NavBar/navbar';
 
 const Top = () => {
   const [username, setUsername] = useState('');
+  const [name,setName] = useState('');
   const [user, setUser] = useState({ username: '', email: '', phone: '', name: '', file_path: '' });
   const navigate = useNavigate();
 
   useEffect(() => {
       const storedUsername = localStorage.getItem('username');
-      console.log('Stored Username:', storedUsername);
+      const storedName = localStorage.getItem('name')
 
       if (storedUsername) {
           setUsername(storedUsername);
+      }
+      if(storedName) {
+          setName(storedName);
       }
 
       const fetchUserData = async () => {
@@ -48,14 +52,18 @@ const Top = () => {
       fetchUserData();
   }, []);
 
+  const handleGoToCharts = () => {
+    navigate('/wastechart');
+};
+
 
   return (
     <div className='topSection'>
       <div className='headerSection flex'>
         <div className='title'>
           <h1>Welcome to EnviroSense!</h1>
-          <p>Hello {username}, Welcome Back!</p>
-        </div>
+          <p>Hello {name || username}, Welcome Back!</p>
+          </div>
 
           <div className='adminDiv flex'>
             <NavBar/>
@@ -68,7 +76,8 @@ const Top = () => {
           <p>Your hub for smart and efficient waste tracking and management</p>
 
           <div className='buttons flex'>
-            <button className='btn'> Go to charts</button>
+          <button className='btn' onClick={handleGoToCharts}>Go to charts</button>
+           
           </div>
 
           <div className='videoDiv'>
